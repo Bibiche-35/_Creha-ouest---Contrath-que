@@ -12,9 +12,14 @@
 
 // là je crée un objet à partir de ma classe PDO pour faire la connexion. Le tableau transmis est un moyen d'afficher les erreurs de connexion à la bdd si il y en a
 
-class DB {
+namespace Contratheque\Model;
 
-    private $pdo; 
+use PDO;
+use PDOException;
+
+class BDD {
+
+    private $dbConnect; 
 
     public function __construct()
     {

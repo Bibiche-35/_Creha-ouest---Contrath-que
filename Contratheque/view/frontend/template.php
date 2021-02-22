@@ -8,9 +8,7 @@
         <title><?= $title ?></title>
         <link href="public/CSS/style.css" rel="stylesheet" /> 
     </head>
-    <header>
-        <img src="/public/images/logoPouzyBook.png" alt="">
-    </header>
+        
     <body>
         <?= $content ?>
     </body>

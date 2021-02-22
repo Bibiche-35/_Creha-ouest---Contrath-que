@@ -29,11 +29,17 @@
                 <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">Nom</th>
-                        <th scope="col">Auteur</th>
-                        <th scope="col">Date de publication</th>
-                        <th scope="col">Genre</th>
+                        <th scope="col">Siret</th>
+                        <th scope="col">Dénomination</th>
+                        <th scope="col">Adresse_1</th>
+                        <th scope="col">Adresse_2</th>
+                        <th scope="col">Adresse_3</th>
+                        <th scope="col">BP_CS</th>
+                        <th scope="col">Code Postal</th>
+                        <th scope="col">Ville</th>
+                        <th scope="col">Pays</th>
+                        <th scope="col">Site Internet</th>
+                        <th scope="col">E-mail</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,11 +47,17 @@
                     (supprimez ces 2 lignes d'exemple) -->
                     <?php foreach($BookList as $book) :?>  
                         <tr>
-                            <td><?= $book['id'];?></td>
-                            <td><?= $book['name'];?></td>
-                            <td><?= $book['author'];?> </td>
-                            <td><?= $book['release_date'];?></td>
-                            <td><?= $book['genre_id'];?></td>
+                            <td><a href="index.php?action=livre&amp;id=<?= $book['siret_client'] ?>">Voir</a></td>
+                            <td><?php echo $book['denomination_client'] ;?></td>
+                            <td><?= $book['adresse1_siege'];?> </td>
+                            <td><?= $book['adresse2_siege'];?></td>
+                            <td><?= $book['adresse3_siege'];?></td>
+                            <td><?= $book['BP_CS_siege'];?> </td>
+                            <td><?= $book['code_postal_siege'];?></td>
+                            <td><?= $book['ville_siege'];?></td>
+                            <td><?= $book['pays_siege'];?> </td>
+                            <td><?= $book['site_internet_siege'];?></td>
+                            <td><?= $book['email_siege'];?></td>
                         </tr>
                     <?php endforeach ?>  
                 </tbody>

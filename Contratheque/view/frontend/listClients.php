@@ -18,16 +18,17 @@
                 <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Détails</th>
-                        <th scope="col">Titre</th>
-                        <th scope="col">Auteur</th>
-                        <th scope="col">Référence ISBN</th>
-                        <th scope="col">Nbre pages</th>
-                        <th scope="col">Editeur</th>
-                        <th scope="col">Genre</th>
-                        <th scope="col">Année</th>
-                        <th scope="col">Langue</th>
-                        <th scope="col">Format</th>
+                        <th scope="col">Siret</th>
+                        <th scope="col">Dénomination</th>
+                        <th scope="col">Adresse_1</th>
+                        <th scope="col">Adresse_2</th>
+                        <th scope="col">Adresse_3</th>
+                        <th scope="col">BP_CS</th>
+                        <th scope="col">Code Postal</th>
+                        <th scope="col">Ville</th>
+                        <th scope="col">Pays</th>
+                        <th scope="col">Site Internet</th>
+                        <th scope="col">E-mail</th>
                     </tr>
                 </thead>
                 <tbody>                 
@@ -35,17 +36,17 @@
                         while ($data = $posts->fetch()) { 
                     ?> 
                         <tr>   
-                            <td><a href="index.php?action=livre&amp;id=<?= $data['id'] ?>">Voir</a></td>
-                            <td><?php echo $data['titre'] ;?></td>
-                            <td><?= $data['auteur'];?> </td>
-                            <td><?= $data['ref'];?></td>
-                            <td><?= $data['nbrPages'];?></td>
-                            <td><?= $data['edition'];?> </td>
-                            <td><?= $data['genre'];?></td>
-                            <td><?= $data['anneeEdition'];?></td>
-                            <td><?= $data['langue'];?> </td>
-                            <td><?= $data['format'];?></td>
-
+                            <td><a href="index.php?action=livre&amp;id=<?= $data['siret_client'] ?>">Voir</a></td>
+                            <td><?php echo $data['denomination_client'] ;?></td>
+                            <td><?= $data['adresse1_siege'];?> </td>
+                            <td><?= $data['adresse2_siege'];?></td>
+                            <td><?= $data['adresse3_siege'];?></td>
+                            <td><?= $data['BP_CS_siege'];?> </td>
+                            <td><?= $data['code_postal_siege'];?></td>
+                            <td><?= $data['ville_siege'];?></td>
+                            <td><?= $data['pays_siege'];?> </td>
+                            <td><?= $data['site_internet_siege'];?></td>
+                            <td><?= $data['email_siege'];?></td>
                         </tr>
                     <?php 
                         } 
