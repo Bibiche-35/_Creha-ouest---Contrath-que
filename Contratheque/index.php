@@ -7,18 +7,27 @@ require('controller/frontend.php');
 try { // On essaie de faire des choses
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {
-            listPosts();
+            readClients();
         }
-        elseif ($_GET['action'] == 'post') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                post();
+        elseif ($_GET['action'] == 'client') {
+            if (isset($_GET['siret']) && $_GET['siret'] > 0) {
+                readDetailClient();
             }
             else {
                 // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
-        elseif ($_GET['action'] == 'addComment') {
+        elseif ($_GET['action'] == 'editClientView') {
+            if (isset($_GET['siret']) && $_GET['siret'] > 0) {
+                updateDetailClient($_POST['siret']);
+            }
+            else {
+                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+/*        elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {
                     addComment($_GET['id'], $_POST['author'], $_POST['comment']);
@@ -53,10 +62,10 @@ try { // On essaie de faire des choses
             else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        }
+        } */
     }
     else {
-        listPosts();
+        readClients();
     }
     }
 catch(Exception $e) {

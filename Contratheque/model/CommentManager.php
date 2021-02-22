@@ -1,17 +1,17 @@
 <?php
 
-namespace TP_Blog_avec_commentaires\Model; // La classe sera dans ce namespace
+namespace Contratheque\Model; // La classe sera dans ce namespace
 
-require_once("model/Manager.php");
+require_once("model/DB.php");
 
 // class pour y regrouper toutes nos fonctions qui concernent les commentaires
-class CommentManager extends Manager
+class CommentManager extends DB
 {
     // fonction pour récupérer les commentaires associés à un ID de post
     public function getComments($postId)
     {
         // Connexion à la base de données rappelle de la fonction
-        $db = $this->dbConnect();
+        $db = $this->getPdo();
 
         $comments = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
         $comments->execute(array($postId));
@@ -23,7 +23,7 @@ class CommentManager extends Manager
     public function postComment($postId, $author, $comment)
     {
         // Connexion à la base de données rappelle de la fonction
-        $db = $this->dbConnect();
+        $db = $this->getPdo();
 
         $comments = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
         $affectedLines = $comments->execute(array($postId, $author, $comment));
@@ -34,7 +34,7 @@ class CommentManager extends Manager
     // Fonction pour récupérer les commentaires associés à un ID de commentaire
     public function getComment($id)
     {
-        $db = $this->dbConnect();
+        $db = $this->getPdo();
         $req = $db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE id = ?');
         $req->execute(array($id));
         $comment = $req->fetch();
@@ -45,7 +45,7 @@ class CommentManager extends Manager
     // Function pour modifier des commentaires déjà existants sur base de données
     public function updateComment($id, $comment)
     {
-        $db = $this->dbConnect();
+        $db = $this->getPdo();
         $req = $db->prepare('UPDATE comments SET comment = ?, comment_date = NOW() WHERE id = ?');
         $newComment = $req->execute(array($comment, $id));
   

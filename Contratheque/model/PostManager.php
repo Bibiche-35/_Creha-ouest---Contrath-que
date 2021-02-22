@@ -1,18 +1,18 @@
 <?php
 
-namespace TP_Blog_avec_commentaires\Model; // La classe sera dans ce namespace
+namespace Contratheque\Model; // La classe sera dans ce namespace
 
 require_once("model/Manager.php");
 
 // class pour y regrouper toutes nos fonctions qui concernent les posts
-class PostManager extends Manager
+class PostManager extends DB
 {
     
     // fonction pour récupérer tous posts de la base de donnée et on affiche les ( derniers billets)
     public function getPosts()
     {
         // Connexion à la base de données rappelle de la fonction
-        $db = $this->dbConnect();
+        $db = $this->getPDO();
     
         // On récupère les 5 derniers billets de la base de donnée 
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 5');
@@ -25,7 +25,7 @@ class PostManager extends Manager
     public function getPost($postId)
     {
         // Connexion à la base de données rappelle de la fonction
-        $db = $this->dbConnect();
+        $db = $this->getPDO();
     
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE id = ?');
         $req->execute(array($postId));

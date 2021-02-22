@@ -3,33 +3,47 @@
 <?php
 
 // Chargement des classes
-require_once('model/PostManager.php');
+require_once('model/ClientManager.php');
 require_once('model/CommentManager.php');
 
-function listPosts()
+// Ce contrôleur récupère lui aussi les informations dont on a besoin (id du billet, auteur, commentaire) et les transmet au modèle :
+function readClients()
 {
-    $postManager = new \TP_Blog_avec_commentaires\model\PostManager(); // Création d'un objet
-    $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
+    $postManager = new \Contratheque\Model\ClientManager(); // Création d'un objet
+    $posts = $postManager->listeDesClients(); // Appel d'une fonction de cet objet
 
-    require('view/frontend/listPostsView.php');
+    require('view/frontend/listClientsView.php');
 }
 
-function post()
+function readDetailClient()
 {
-    $postManager = new \TP_Blog_avec_commentaires\model\PostManager();
-    $commentManager = new \TP_Blog_avec_commentaires\model\CommentManager();
+    $postManager = new \Contratheque\Model\ClientManager();
 
-    $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
+    $post = $postManager->detailClient($_GET['siret']);
 
-    require('view/frontend/postView.php');
+    require('view/frontend/detailClientView.php');
+}
+
+function updateDetailClient($siret_client)
+{
+    $commentManager = new \Contratheque\Model\ClientManager();
+  
+    $newComment = $commentManager->updateClient($siret_client);
+  
+    if ($newComment === false) {
+  
+        throw new Exception('Impossible de modifier le commentaire !');
+    }
+    else {
+        header('Location: index.php?action=editClientView&siret=' . $siret_client);
+    }
 }
 
 // Ce contrôleur récupère lui aussi les informations dont on a besoin (id du billet, auteur, commentaire) et les transmet au modèle :
 
 function addComment($postId, $author, $comment)
 {
-    $commentManager = new \TP_Blog_avec_commentaires\model\CommentManager();
+    $commentManager = new \Contratheque\Model\CommentManager();
 
     $affectedLines = $commentManager->postComment($postId, $author, $comment);
 
@@ -45,7 +59,7 @@ function addComment($postId, $author, $comment)
 // Ce contrôleur récupère lui aussi les informations dont on a besoin (id du billet, auteur, commentaire) et les transmet au modèle :
 function viewComment()
 {
-    $commentManager = new \TP_Blog_avec_commentaires\model\CommentManager();
+    $commentManager = new \Contratheque\Model\CommentManager();
     $comment = $commentManager->getComment($_GET['id']);
   
     require('view/frontend/editView.php');
@@ -54,7 +68,7 @@ function viewComment()
   
 function editComment($id, $comment)
 {
-    $commentManager = new \TP_Blog_avec_commentaires\model\CommentManager();
+    $commentManager = new \Contratheque\Model\CommentManager();
   
     $newComment = $commentManager->updateComment($id, $comment);
   
