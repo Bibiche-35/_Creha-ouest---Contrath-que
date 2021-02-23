@@ -33,7 +33,7 @@ function formulaireUpdateClient()
     require('view/frontend/editClientView.php');
 }
 
-function formulaireUpdateClient()
+function UpdateClient()
 {
     $postManager = new \Contratheque\Model\ClientManager();
 
