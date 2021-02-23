@@ -20,7 +20,7 @@ try { // On essaie de faire des choses
         }
         elseif ($_GET['action'] == 'editClientView') {
             if (isset($_GET['siret']) && $_GET['siret'] > 0) {
-                updateDetailClient($_POST['siret']);
+                formulaireUpdateClient();
             }
             else {
                 // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch

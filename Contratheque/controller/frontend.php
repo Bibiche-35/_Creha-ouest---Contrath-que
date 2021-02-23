@@ -24,19 +24,22 @@ function readDetailClient()
     require('view/frontend/detailClientView.php');
 }
 
-function updateDetailClient($siret_client)
+function formulaireUpdateClient()
 {
-    $commentManager = new \Contratheque\Model\ClientManager();
-  
-    $newComment = $commentManager->updateClient($siret_client);
-  
-    if ($newComment === false) {
-  
-        throw new Exception('Impossible de modifier le commentaire !');
-    }
-    else {
-        header('Location: index.php?action=editClientView&siret=' . $siret_client);
-    }
+    $postManager = new \Contratheque\Model\ClientManager();
+
+    $post = $postManager->detailClient($_GET['siret']);
+
+    require('view/frontend/editClientView.php');
+}
+
+function formulaireUpdateClient()
+{
+    $postManager = new \Contratheque\Model\ClientManager();
+
+    $post = $postManager->detailClient($_GET['siret']);
+
+    require('view/frontend/editClientView.php');
 }
 
 // Ce contrôleur récupère lui aussi les informations dont on a besoin (id du billet, auteur, commentaire) et les transmet au modèle :

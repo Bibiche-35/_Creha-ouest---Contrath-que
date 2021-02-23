@@ -2,8 +2,8 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-<h1>Ma super contrathèqe !</h1>
-<p><a href="index.php">Retour à la liste des clients</a></p>
+<h1>Ma super contrathèque !</h1>
+<p><a href="index.php?action=listPosts">Retour à la liste des clients</a></p>
 
 <p>Détail du client :</p>
 
@@ -63,7 +63,7 @@
     </tr>
 </tbody>
 </table>
-<a href="index.php?action=editClientView&amp;id=<?= $post['siret_client'] ?>">Modifier les informations</a>
+<a href="index.php?action=editClientView&amp;siret=<?= $post['siret_client'] ?>">Modifier les informations</a>
 
 <?php $content = ob_get_clean(); ?>
 
