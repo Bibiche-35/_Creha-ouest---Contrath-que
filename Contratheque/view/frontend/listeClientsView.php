@@ -24,9 +24,9 @@
 <tbody>
 <!-- TODO #1 boucler sur le tableau $bookList contenant tous les livres
 (supprimez ces 2 lignes d'exemple) -->
-<?php foreach($posts as $detail) :?>  
+<?php foreach($postClients as $detail) :?>  
     <tr>
-        <td><a href="index.php?action=client&amp;siret=<?= $detail['siret_client'] ?>">Détail</a></td>
+        <td><a href="index.php?action=detailClient&amp;siret_client=<?= $detail['siret_client'] ?>">Détail</a></td>
         <td><?= $detail['siret_client'];?></td>
         <td><?= $detail['denomination_client'];?></td>
         <td><?= $detail['adresse1_siege'];?> </td>

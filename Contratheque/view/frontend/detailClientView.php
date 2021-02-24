@@ -3,7 +3,7 @@
 
 <?php ob_start(); ?>
 <h1>Ma super contrathèque !</h1>
-<p><a href="index.php?action=listPosts">Retour à la liste des clients</a></p>
+<p><a href="index.php?action=listeClients">Retour à la liste des clients</a></p>
 
 <p>Détail du client :</p>
 
@@ -38,32 +38,32 @@
 <!-- TODO #1 boucler sur le tableau $bookList contenant tous les livres
 (supprimez ces 2 lignes d'exemple) -->
     <tr>
-        <td><?= $post['siret_client'];?></td>
-        <td><?= $post['denomination_client'];?></td>
-        <td><?= $post['adresse1_siege'];?> </td>
-        <td><?= $post['adresse2_siege'];?> </td>
-        <td><?= $post['adresse3_siege'];?> </td>
-        <td><?= $post['BP_CS_siege'];?></td>
-        <td><?= $post['code_postal_siege'];?></td>
-        <td><?= $post['ville_siege'];?></td>
-        <td><?= $post['pays_siege'];?></td>
-        <td><?= $post['site_internet_siege'];?></td>
-        <td><?= $post['email_siege'];?></td>
-        <td><?= $post['telephone_siege'];?></td>
-        <td><?= $post['champlibre_chorus'];?></td>
-        <td><?= $post['adresse1_fact'];?> </td>
-        <td><?= $post['adresse2_fact'];?> </td>
-        <td><?= $post['adresse3_fact'];?> </td>
-        <td><?= $post['BP_CS_fact'];?></td>
-        <td><?= $post['code_postal_fact'];?></td>
-        <td><?= $post['ville_fact'];?></td>
-        <td><?= $post['pays_fact'];?></td>
-        <td><?= $post['email_fact'];?></td>
-        <td><?= $post['telephone_fact'];?></td>
+        <td><?= $postClient['siret_client'];?></td>
+        <td><?= $postClient['denomination_client'];?></td>
+        <td><?= $postClient['adresse1_siege'];?> </td>
+        <td><?= $postClient['adresse2_siege'];?> </td>
+        <td><?= $postClient['adresse3_siege'];?> </td>
+        <td><?= $postClient['BP_CS_siege'];?></td>
+        <td><?= $postClient['code_postal_siege'];?></td>
+        <td><?= $postClient['ville_siege'];?></td>
+        <td><?= $postClient['pays_siege'];?></td>
+        <td><?= $postClient['site_internet_siege'];?></td>
+        <td><?= $postClient['email_siege'];?></td>
+        <td><?= $postClient['telephone_siege'];?></td>
+        <td><?= $postClient['champlibre_chorus'];?></td>
+        <td><?= $postClient['adresse1_fact'];?> </td>
+        <td><?= $postClient['adresse2_fact'];?> </td>
+        <td><?= $postClient['adresse3_fact'];?> </td>
+        <td><?= $postClient['BP_CS_fact'];?></td>
+        <td><?= $postClient['code_postal_fact'];?></td>
+        <td><?= $postClient['ville_fact'];?></td>
+        <td><?= $postClient['pays_fact'];?></td>
+        <td><?= $postClient['email_fact'];?></td>
+        <td><?= $postClient['telephone_fact'];?></td>
     </tr>
 </tbody>
 </table>
-<a href="index.php?action=editClientView&amp;siret=<?= $post['siret_client'] ?>">Modifier les informations</a>
+<a href="index.php?action=modificationClient&amp;siret_client=<?= $postClient['siret_client'] ?>">Modifier les informations</a>
 
 <?php $content = ob_get_clean(); ?>
 

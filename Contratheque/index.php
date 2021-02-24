@@ -6,21 +6,30 @@ require('controller/frontend.php');
 
 try { // On essaie de faire des choses
     if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'listPosts') {
-            readClients();
+        if ($_GET['action'] == 'listeClients') {
+            listeClients();
         }
-        elseif ($_GET['action'] == 'client') {
-            if (isset($_GET['siret']) && $_GET['siret'] > 0) {
-                readDetailClient();
+        elseif ($_GET['action'] == 'detailClient') {
+            if (isset($_GET['siret_client']) && $_GET['siret_client'] > 0) {
+                detailClient();
             }
             else {
                 // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
-        elseif ($_GET['action'] == 'editClientView') {
-            if (isset($_GET['siret']) && $_GET['siret'] > 0) {
-                formulaireUpdateClient();
+        elseif ($_GET['action'] == 'modificationClient') {
+            if (isset($_GET['siret_client']) && $_GET['siret_client'] > 0) {
+                formulaireModificationClient();
+            }
+            else {
+                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+        elseif ($_GET['action'] == 'modifierClient') {
+            if (isset($_GET['siret_client']) && $_GET['siret_client'] > 0) {
+                modifierClient($_GET['siret_client'], $_POST['denomination_client'], $_POST['adresse1_siege'], $_POST['adresse2_siege'], $_POST['adresse3_siege'], $_POST['BP_CS_siege'], $_POST['code_postal_siege'], $_POST['ville_siege'], $_POST['pays_siege'], $_POST['site_internet_siege'], $_POST['email_siege'], $_POST['telephone_siege'], $_POST['champlibre_chorus'], $_POST['adresse1_fact'], $_POST['adresse2_fact'], $_POST['adresse3_fact'], $_POST['BP_CS_fact'], $_POST['code_postal_fact'], $_POST['ville_fact'], $_POST['pays_fact'], $_POST['email_fact'], $_POST['telephone_fact']);
             }
             else {
                 // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
@@ -49,18 +58,19 @@ try { // On essaie de faire des choses
             else {
                 throw new Exception('Aucun commentaire trouvé !');
             }
-        } */
-        elseif ($_GET['action'] == 'editComment') {
-            if (isset($_GET['siret']) && $_GET['siret'] > 0) {
-                updateClient($_GET['siret'], $_POST['denomination_client'], $_POST['adresse1_siege'], $_POST['adresse2_siege'], $_POST['adresse3_siege'], $_POST['BP_CS_siege'], $_POST['code_postal_siege'], $_POST['ville_siege'], $_POST['pays_siege'], $_POST['site_internet_siege'], $_POST['email_siege'], $_POST['telephone_siege'], $_POST['champlibre_chorus'], $_POST['adresse1_fact'], $_POST['adresse2_fact'], $_POST['adresse3_fact'], $_POST['BP_CS_fact'], $_POST['code_postal_fact'], $_POST['ville_fact'], $_POST['pays_fact'], $_POST['email_fact'], $_POST['telephone_fact']);  
+        } 
+        elseif ($_GET['action'] == 'editClient') {
+            if (isset($_GET['siret_client']) && $_GET['siret_client'] > 0) {
+                updateClient($_GET['siret_client'], $_POST['denomination_client'], $_POST['adresse1_siege'], $_POST['adresse2_siege'], $_POST['adresse3_siege'], $_POST['BP_CS_siege'], $_POST['code_postal_siege'], $_POST['ville_siege'], $_POST['pays_siege'], $_POST['site_internet_siege'], $_POST['email_siege'], $_POST['telephone_siege'], $_POST['champlibre_chorus'], $_POST['adresse1_fact'], $_POST['adresse2_fact'], $_POST['adresse3_fact'], $_POST['BP_CS_fact'], $_POST['code_postal_fact'], $_POST['ville_fact'], $_POST['pays_fact'], $_POST['email_fact'], $_POST['telephone_fact']);
+
             }
             else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        }
+        }  */
     }
     else {
-        readClients();
+        listeClients();
     }
     }
 catch(Exception $e) {
