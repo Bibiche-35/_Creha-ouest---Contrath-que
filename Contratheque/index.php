@@ -49,20 +49,15 @@ try { // On essaie de faire des choses
             else {
                 throw new Exception('Aucun commentaire trouvé !');
             }
-        }
+        } */
         elseif ($_GET['action'] == 'editComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['comment'])) {
-                    editComment($_GET['id'], $_POST['comment']);  
-                   }
-                else {
-                    throw new Exception('Tous les champs ne sont pas remplis !');
-                }
+            if (isset($_GET['siret']) && $_GET['siret'] > 0) {
+                updateClient($_GET['siret'], $_POST['denomination_client'], $_POST['adresse1_siege'], $_POST['adresse2_siege'], $_POST['adresse3_siege'], $_POST['BP_CS_siege'], $_POST['code_postal_siege'], $_POST['ville_siege'], $_POST['pays_siege'], $_POST['site_internet_siege'], $_POST['email_siege'], $_POST['telephone_siege'], $_POST['champlibre_chorus'], $_POST['adresse1_fact'], $_POST['adresse2_fact'], $_POST['adresse3_fact'], $_POST['BP_CS_fact'], $_POST['code_postal_fact'], $_POST['ville_fact'], $_POST['pays_fact'], $_POST['email_fact'], $_POST['telephone_fact']);  
             }
             else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        } */
+        }
     }
     else {
         readClients();
