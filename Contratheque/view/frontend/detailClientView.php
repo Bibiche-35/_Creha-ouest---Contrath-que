@@ -64,6 +64,11 @@
         <td><?= $postClient['telephone_fact'];?></td>
     </tr>
 </tbody>
+</table>
+<a href="index.php?action=modificationClient&amp;siret_client=<?= $postClient['siret_client'] ?>">Modifier les informations du client</a>
+</br>
+</br>
+
 <table class="table table-departements">
 <thead>
     <tr>
@@ -72,16 +77,36 @@
     </tr>
 </thead>
 <tbody>
-
 <?php foreach($postDepartements as $detail) :?>  
     <tr>
         <td><?= $detail['numero_departement'];?></td>
         <td><?= $detail['designation_departement'];?></td>
     </tr>
-<?php endforeach ?>     
+<?php endforeach ?>
+</tbody>  
+</table>
+</br>  
+
+<table class="table table-suivi-client">
+<thead>
+    <tr>
+        <th scope="col">Date du commentaire</th>
+        <th scope="col">Auteur du commentaire</th>
+        <th scope="col">Statut du commentaire</th>
+        <th scope="col">Remarques du commentaire</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><?= $postSuiviClient['datetime_client_fr'];?></td>
+        <td><?= $postSuiviClient['auteur_client'];?></td>
+        <td><?= $postSuiviClient['statut_client'];?></td>
+        <td><?= $postSuiviClient['commentaire_client'];?></td>
+    </tr>  
 </tbody>
 </table>
-<a href="index.php?action=modificationClient&amp;siret_client=<?= $postClient['siret_client'] ?>">Modifier les informations</a>
+<a href="index.php?action=lireHistoriqueSuiviClient&amp;siret_client=<?= $postClient['siret_client'] ?>">afficher les historiques de suivi Client</a>
+</br>
 
 <?php $content = ob_get_clean(); ?>
 

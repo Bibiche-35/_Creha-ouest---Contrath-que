@@ -2,7 +2,7 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-<h1>Ma super contrathèqe !</h1>
+<h1>Ma super contrathèque !</h1>
 <p>Liste des clients :</p>
 
 <table class="table table-striped">

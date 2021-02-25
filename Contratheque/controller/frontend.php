@@ -5,6 +5,7 @@
 // Chargement des classes
 require_once('model/ClientManager.php');
 require_once('model/DepartementManager.php');
+require_once('model/SuiviClientManager.php');
 
 // Ce contrôleur récupère toutes les informations qu'il a besoin pour lire tous les clients avec des champs définis et les transmet au modèle : listeDesClients()
 function listeClients()
@@ -20,9 +21,11 @@ function detailClient()
 {
     $postManager = new \Contratheque\model\ClientManager();
     $departementManager = new \Contratheque\model\DepartementManager();
+    $suiviClientManager = new \Contratheque\model\SuiviClientManager();
     
     $postClient = $postManager->readDetailClient($_GET['siret_client']);
     $postDepartements = $departementManager->readDepartements($_GET['siret_client']);
+    $postSuiviClient = $suiviClientManager->readDernierSuiviClient($_GET['siret_client']);
 
     require('view/frontend/detailClientView.php');
 }
@@ -48,6 +51,17 @@ function modifierClient($siret_client, $denomination_client, $adresse1_siege, $a
   
         throw new Exception('Impossible de modifier le commentaire !');
     }
+}
+
+// Ce contrôleur récupère toutes les informations qu'il a besoin pour afficher l'historique des modifications client et les transmet au modèle : detailClient($_GET['siret'])
+function listeSuiviClient()
+{
+
+    $historiqueSuiviClientManager = new \Contratheque\model\SuiviClientManager();
+    
+    $historiqueSuiviClient = $historiqueSuiviClientManager->readHistoriqueSuiviClient($_GET['siret_client']);
+
+    require('view/frontend/historiqueSuiviClientView.php');
 }
 
 

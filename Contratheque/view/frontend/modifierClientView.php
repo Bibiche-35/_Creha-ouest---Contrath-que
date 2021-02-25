@@ -1,12 +1,10 @@
 <?php $title = 'Modifier un commentaire' ?>
   
 <?php ob_start(); ?>
-<h1>Mon super blog !</h1>
+<h1>Ma super contrathèque !</h1>
 <p><a href="index.php?action=detailClient&amp;siret_client=<?= $postClient['siret_client'] ?>">Retour au client</a></p>
   
 <h2>Modifier un client</h2>
-
-
   
 <form action="index.php?action=modifierClient&amp;siret_client=<?= $postClient['siret_client'] ?>" method="post">
     <div>
