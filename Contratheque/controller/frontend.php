@@ -6,6 +6,7 @@
 require_once('model/ClientManager.php');
 require_once('model/DepartementManager.php');
 require_once('model/SuiviClientManager.php');
+require_once('model/ConventionManager.php');
 
 // Ce contrôleur récupère toutes les informations qu'il a besoin pour lire tous les clients avec des champs définis et les transmet au modèle : listeDesClients()
 function listeClients()
@@ -22,10 +23,13 @@ function detailClient()
     $postManager = new \Contratheque\model\ClientManager();
     $departementManager = new \Contratheque\model\DepartementManager();
     $suiviClientManager = new \Contratheque\model\SuiviClientManager();
+    $conventionClient = new \Contratheque\model\ConventionManager();
+
     
     $postClient = $postManager->readDetailClient($_GET['siret_client']);
     $postDepartements = $departementManager->readDepartements($_GET['siret_client']);
     $postSuiviClient = $suiviClientManager->readDernierSuiviClient($_GET['siret_client']);
+    $postConventionClient = $conventionClient->readConventionClient($_GET['siret_client']);
 
     require('view/frontend/detailClientView.php');
 }
@@ -63,6 +67,7 @@ function listeSuiviClient()
 
     require('view/frontend/historiqueSuiviClientView.php');
 }
+
 
 
 

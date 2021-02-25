@@ -36,8 +36,6 @@
     </tr>
 </thead>
 <tbody>
-<!-- TODO #1 boucler sur le tableau $bookList contenant tous les livres
-(supprimez ces 2 lignes d'exemple) -->
     <tr>
         <td><?= $postClient['siret_client'];?></td>
         <td><?= $postClient['denomination_type'];?></td>
@@ -102,6 +100,40 @@
         <td><?= $postSuiviClient['auteur_client'];?></td>
         <td><?= $postSuiviClient['statut_client'];?></td>
         <td><?= $postSuiviClient['commentaire_client'];?></td>
+    </tr>  
+</tbody>
+</table>
+<a href="index.php?action=lireHistoriqueSuiviClient&amp;siret_client=<?= $postClient['siret_client'] ?>">afficher les historiques de suivi Client</a>
+</br>
+
+
+<table class="table table-convention-client">
+<thead>
+    <tr>
+        <th scope="col">Nbre de résidences principales</th>
+        <th scope="col">Nbre de logements sociaux</th>
+        <th scope="col">Calcul estimatif convention</th>
+        <th scope="col">Existence d'une convention ?</th>
+        <th scope="col">Date début convention</th>
+        <th scope="col">Date fin de convention</th>
+        <th scope="col">Durée en mois</th>
+        <th scope="col">Montannt Annuel</th>
+        <th scope="col">Commentaire libre sur convention</th>
+        <th scope="col">Lien Réseau vers convention</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><?= $postConventionClient['nbreres_principales_conv'];?></td>
+        <td><?= $postConventionClient['nbrelog_sociaux_conv'];?></td>
+        <td><?= $postConventionClient['calcul_estimatif_conv'];?></td>
+        <td><?= $postConventionClient['boolean_convention'];?></td>
+        <td><?= $postConventionClient['date_debut_conv_fr'];?></td>
+        <td><?= $postConventionClient['date_fin_conv_fr'];?></td>
+        <td><?= $postConventionClient['durée_mois_conv'];?></td>
+        <td><?= $postConventionClient['montant_annuel_conv'];?></td>
+        <td><?= $postConventionClient['commentaire_conv'];?></td>
+        <td><?= $postConventionClient['lien_conv'];?></td>
     </tr>  
 </tbody>
 </table>
