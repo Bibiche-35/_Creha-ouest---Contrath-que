@@ -33,15 +33,15 @@ class ClientManager extends DB
         return $post;
     }
 
-    // fonction pour modifier les informations d'un client en fonction de son SIRET
+    // fonction pour modifier un ou plusieurs champs de son client : récupère les variables et éxécute la modification dans l'objet PDO
     public function updateDetailClient($siret_client, $denomination_client, $adresse1_siege, $adresse2_siege, $adresse3_siege, $BP_CS_siege, $code_postal_siege, $ville_siege, $pays_siege, $site_internet_siege, $email_siege, $telephone_siege, $champlibre_chorus, $adresse1_fact, $adresse2_fact, $adresse3_fact, $BP_CS_fact, $code_postal_fact, $ville_fact, $pays_fact, $email_fact, $telephone_fact)
     {
         // Connexion à la base de données rappelle de la fonction
         $db = $this->getPDO();
         
         $req = $db->prepare('UPDATE client SET denomination_client = ?, adresse1_siege = ?, adresse2_siege = ?, adresse3_siege = ?, BP_CS_siege = ?, code_postal_siege = ?, ville_siege = ?, pays_siege = ?, site_internet_siege = ?, email_siege = ?, telephone_siege = ?, champlibre_chorus = ?, adresse1_fact = ?, adresse2_fact = ?, adresse3_fact = ?, BP_CS_fact = ?, code_postal_fact = ?, ville_fact = ?, pays_fact = ?, email_fact = ?, telephone_fact = ? WHERE siret_client = ?');
-        $clientManager = $req->execute(array($siret_client, $denomination_client, $adresse1_siege, $adresse2_siege, $adresse3_siege, $BP_CS_siege, $code_postal_siege, $ville_siege, $pays_siege, $site_internet_siege, $email_siege, $telephone_siege, $champlibre_chorus, $adresse1_fact, $adresse2_fact, $adresse3_fact, $BP_CS_fact, $code_postal_fact, $ville_fact, $pays_fact, $email_fact, $telephone_fact));
+        $postClient = $req->execute(array($denomination_client, $adresse1_siege, $adresse2_siege, $adresse3_siege, $BP_CS_siege, $code_postal_siege, $ville_siege, $pays_siege, $site_internet_siege, $email_siege, $telephone_siege, $champlibre_chorus, $adresse1_fact, $adresse2_fact, $adresse3_fact, $BP_CS_fact, $code_postal_fact, $ville_fact, $pays_fact, $email_fact, $telephone_fact, $siret_client));
         
-        return $clientManager;
+        return $postClient;
     }
 }

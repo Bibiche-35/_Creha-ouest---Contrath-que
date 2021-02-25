@@ -37,8 +37,6 @@
         <input type="submit" value="Enregistrer les modifications" />
     </div>
 
-    <?php var_dump($postClient); ?>
-
 </form>
   
 <?php $content = ob_get_clean(); ?>
