@@ -15,7 +15,7 @@ class ClientManager extends DB
         $db = $this->getPDO();
     
         // On récupère tous les clients de la base de donnée 
-        $req = $db->query('SELECT siret_client, denomination_client, adresse1_siege, adresse2_siege, adresse3_siege, BP_CS_siege, code_postal_siege, ville_siege, email_fact, telephone_fact  FROM client');
+        $req = $db->query('SELECT siret_client, denomination_client, adresse1_siege, adresse2_siege, adresse3_siege, BP_CS_siege, code_postal_siege, ville_siege, email_fact, telephone_fact, id_type_client, id_type, denomination_type FROM client, type_client WHERE client.id_type_client = type_client.id_type');
 
         return $req;
     }
@@ -26,7 +26,7 @@ class ClientManager extends DB
         // Connexion à la base de données rappelle de la fonction
         $db = $this->getPDO();
     
-        $req = $db->prepare('SELECT siret_client, denomination_client, adresse1_siege, adresse2_siege, adresse3_siege, BP_CS_siege, code_postal_siege, ville_siege, pays_siege, site_internet_siege, email_siege, telephone_siege, champlibre_chorus, adresse1_fact, adresse2_fact, adresse3_fact, BP_CS_fact, code_postal_fact, ville_fact, pays_fact, email_fact, telephone_fact FROM client WHERE siret_client = ?');
+        $req = $db->prepare('SELECT siret_client, denomination_client, adresse1_siege, adresse2_siege, adresse3_siege, BP_CS_siege, code_postal_siege, ville_siege, pays_siege, site_internet_siege, email_siege, telephone_siege, champlibre_chorus, adresse1_fact, adresse2_fact, adresse3_fact, BP_CS_fact, code_postal_fact, ville_fact, pays_fact, email_fact, telephone_fact, id_type_client, id_type, denomination_type FROM client, type_client WHERE client.id_type_client = type_client.id_type AND siret_client = ?');
         $req->execute(array($siret_client));
         $post = $req->fetch();
     

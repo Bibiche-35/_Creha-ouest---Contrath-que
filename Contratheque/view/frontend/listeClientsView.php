@@ -9,6 +9,7 @@
 <thead>
     <tr>
         <th scope="col">Détail</th>
+        <th scope="col">Type de client</th>
         <th scope="col">Siret du client</th>
         <th scope="col">Dénomination</th>
         <th scope="col">Adresse 1 Siege</th> 
@@ -27,6 +28,7 @@
 <?php foreach($postClients as $detail) :?>  
     <tr>
         <td><a href="index.php?action=detailClient&amp;siret_client=<?= $detail['siret_client'] ?>">Détail</a></td>
+        <td><?= $detail['denomination_type'];?></td>
         <td><?= $detail['siret_client'];?></td>
         <td><?= $detail['denomination_client'];?></td>
         <td><?= $detail['adresse1_siege'];?> </td>

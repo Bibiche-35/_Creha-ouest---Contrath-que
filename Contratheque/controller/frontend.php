@@ -4,6 +4,7 @@
 
 // Chargement des classes
 require_once('model/ClientManager.php');
+require_once('model/DepartementManager.php');
 
 // Ce contrôleur récupère toutes les informations qu'il a besoin pour lire tous les clients avec des champs définis et les transmet au modèle : listeDesClients()
 function listeClients()
@@ -17,12 +18,11 @@ function listeClients()
 // Ce contrôleur récupère toutes les informations qu'il a besoin lire le client avec tous ses champs sans exception et les transmet au modèle : detailClient($_GET['siret'])
 function detailClient()
 {
-    $postManager = new \Contratheque\Model\ClientManager();
+    $postManager = new \Contratheque\model\ClientManager();
+    $departementManager = new \Contratheque\model\DepartementManager();
+    
     $postClient = $postManager->readDetailClient($_GET['siret_client']);
-
-    $departementManager = new \Contratheque\Model\DepartementManager();
-    $postDepartemenets = $departementManager->readDepartements($_GET['siret_client']);
-
+    $postDepartements = $departementManager->readDepartements($_GET['siret_client']);
 
     require('view/frontend/detailClientView.php');
 }

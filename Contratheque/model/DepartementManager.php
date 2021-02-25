@@ -14,10 +14,10 @@ class DepartementManager extends DB
         // Connexion à la base de données rappelle de la fonction
         $db = $this->getPDO();
     
-        $req = $db->query('SELECT numero_departement, designation_departement FROM departement WHERE departement.numero_departement = intervient.numero_departement WHERE siret_client = ?');
+        $req = $db->prepare("SELECT siret_client, numero_departement, designation_departement FROM departement, intervient WHERE departement.code_departement = intervient.numero_departement AND siret_client = ?");
         $req->execute(array($siret_client));
-        $post = $req->fetch();
+        $postDepartements = $req->fetchAll();
     
-        return $post;
+        return $postDepartements;
     }
 }

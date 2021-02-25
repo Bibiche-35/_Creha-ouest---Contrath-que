@@ -11,6 +11,7 @@
 <thead>
     <tr>
         <th scope="col">Siret du client</th>
+        <th scope="col">Type du client</th>
         <th scope="col">Dénomination</th>
         <th scope="col">Adresse 1 Siege</th> 
         <th scope="col">Adresse 2 Siege</th>
@@ -39,6 +40,7 @@
 (supprimez ces 2 lignes d'exemple) -->
     <tr>
         <td><?= $postClient['siret_client'];?></td>
+        <td><?= $postClient['denomination_type'];?></td>
         <td><?= $postClient['denomination_client'];?></td>
         <td><?= $postClient['adresse1_siege'];?> </td>
         <td><?= $postClient['adresse2_siege'];?> </td>
@@ -70,12 +72,13 @@
     </tr>
 </thead>
 <tbody>
-<!-- TODO #1 boucler sur le tableau $bookList contenant tous les livres
-(supprimez ces 2 lignes d'exemple) -->
+
+<?php foreach($postDepartements as $detail) :?>  
     <tr>
-        <td><?= $postDepartements['	umero_departement'];?></td>
-        <td><?= $postDepartements['designation_departement'];?></td>
+        <td><?= $detail['numero_departement'];?></td>
+        <td><?= $detail['designation_departement'];?></td>
     </tr>
+<?php endforeach ?>     
 </tbody>
 </table>
 <a href="index.php?action=modificationClient&amp;siret_client=<?= $postClient['siret_client'] ?>">Modifier les informations</a>
