@@ -18,8 +18,11 @@ function listeClients()
 function detailClient()
 {
     $postManager = new \Contratheque\Model\ClientManager();
-
     $postClient = $postManager->readDetailClient($_GET['siret_client']);
+
+    $departementManager = new \Contratheque\Model\DepartementManager();
+    $postDepartemenets = $departementManager->readDepartements($_GET['siret_client']);
+
 
     require('view/frontend/detailClientView.php');
 }

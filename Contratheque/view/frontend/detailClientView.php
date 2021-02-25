@@ -7,7 +7,7 @@
 
 <p>Détail du client :</p>
 
-<table class="table table-striped">
+<table class="table table-client">
 <thead>
     <tr>
         <th scope="col">Siret du client</th>
@@ -60,6 +60,21 @@
         <td><?= $postClient['pays_fact'];?></td>
         <td><?= $postClient['email_fact'];?></td>
         <td><?= $postClient['telephone_fact'];?></td>
+    </tr>
+</tbody>
+<table class="table table-departements">
+<thead>
+    <tr>
+        <th scope="col">Code departement</th>
+        <th scope="col">Dénomination département</th>
+    </tr>
+</thead>
+<tbody>
+<!-- TODO #1 boucler sur le tableau $bookList contenant tous les livres
+(supprimez ces 2 lignes d'exemple) -->
+    <tr>
+        <td><?= $postDepartements['	umero_departement'];?></td>
+        <td><?= $postDepartements['designation_departement'];?></td>
     </tr>
 </tbody>
 </table>
