@@ -46,6 +46,35 @@ try { // On essaie de faire des choses
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        elseif ($_GET['action'] == 'modificationConvention') {
+            if ((isset($_GET['siret_client']) && $_GET['siret_client'] > 0) || (isset($_GET['denomination_client']) && $_GET['denomination_client'] > 0)) {
+                formulaireModificationConvention();
+            }
+            else {
+                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+
+        elseif ($_GET['action'] == 'modifierConvention') {
+            if ((isset($_GET['siret_client']) && $_GET['siret_client'] > 0) || (isset($_GET['denomination_client']) && $_GET['denomination_client'] > 0)) {
+                modifierConvention($_GET['siret_client'], $_POST['nbreres_principales_conv'], $_POST['nbrelog_sociaux_conv'], $_POST['calcul_estimatif_conv'], $_POST['boolean_convention'], $_POST['date_debut_conv_fr'], $_POST['date_fin_conv_fr'], $_POST['durée_mois_conv'], $_POST['montant_annuel_conv'], $_POST['commentaire_conv'], $_POST['lien_conv']);
+                formulaireModificationConvention();
+            }
+            else {
+                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+        elseif ($_GET['action'] == 'lireHistoriqueSuiviConvention') {
+            if (isset($_GET['siret_client']) && $_GET['siret_client'] > 0) {
+                listeSuiviConvention();
+            }
+            else {
+                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
 /*        elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['author']) && !empty($_POST['comment'])) {

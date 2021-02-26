@@ -6,7 +6,7 @@
 <p><a href="index.php?action=listeClients">Retour à la liste des clients</a></p>
 
 <p>Détail du client :</p>
-
+<a href="index.php?action=modificationClient&amp;siret_client=<?= $postClient['siret_client'] ?>">Modifier les informations du client</a>
 <table class="table table-client">
 <thead>
     <tr>
@@ -63,8 +63,6 @@
     </tr>
 </tbody>
 </table>
-<a href="index.php?action=modificationClient&amp;siret_client=<?= $postClient['siret_client'] ?>">Modifier les informations du client</a>
-</br>
 </br>
 
 <table class="table table-departements">
@@ -84,7 +82,7 @@
 </tbody>  
 </table>
 </br>  
-
+<a href="index.php?action=lireHistoriqueSuiviClient&amp;siret_client=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi client</a>
 <table class="table table-suivi-client">
 <thead>
     <tr>
@@ -103,10 +101,11 @@
     </tr>  
 </tbody>
 </table>
-<a href="index.php?action=lireHistoriqueSuiviClient&amp;siret_client=<?= $postClient['siret_client'] ?>">afficher les historiques de suivi Client</a>
+</tr> 
+
+<p>Détail du client :</p>
+<a href="index.php?action=modificationConvention&amp;siret_client=<?= $postClient['siret_client'] ?>&amp;denomination_client=<?= $postClient['denomination_client'] ?>">Modifier les informations de la convention</a>
 </br>
-
-
 <table class="table table-convention-client">
 <thead>
     <tr>
@@ -137,7 +136,26 @@
     </tr>  
 </tbody>
 </table>
-<a href="index.php?action=lireHistoriqueSuiviClient&amp;siret_client=<?= $postClient['siret_client'] ?>">afficher les historiques de suivi Client</a>
+<a href="index.php?action=lireHistoriqueSuiviConvention&amp;siret_client=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi de la convention du client</a>
+<table class="table table-suivi-convention">
+<thead>
+    <tr>
+        <th scope="col">Date du commentaire</th>
+        <th scope="col">Auteur du commentaire</th>
+        <th scope="col">Statut du commentaire</th>
+        <th scope="col">Remarques du commentaire</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><?= $postSuiviConvention['datetime_conv_fr'];?></td>
+        <td><?= $postSuiviConvention['auteur_conv'];?></td>
+        <td><?= $postSuiviConvention['statut_conv'];?></td>
+        <td><?= $postSuiviConvention['commentaire_conv'];?></td>
+    </tr>  
+</tbody>
+</table>
+</tr> 
 </br>
 
 <?php $content = ob_get_clean(); ?>
