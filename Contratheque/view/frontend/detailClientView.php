@@ -65,6 +65,7 @@
 </table>
 </br>
 
+<p>Détail des départemetns associés au Client :</p>
 <table class="table table-departements">
 <thead>
     <tr>
@@ -103,7 +104,7 @@
 </table>
 </tr> 
 
-<p>Détail du client :</p>
+<p>Détail de la convention du client :</p>
 <a href="index.php?action=modificationConvention&amp;siret_client=<?= $postClient['siret_client'] ?>&amp;denomination_client=<?= $postClient['denomination_client'] ?>">Modifier les informations de la convention</a>
 </br>
 <table class="table table-convention-client">
@@ -155,8 +156,45 @@
     </tr>  
 </tbody>
 </table>
-</tr> 
+
+<p>Détail de la deontologie du client :</p>
+<a href="index.php?action=modificationDeontologie&amp;siret_client=<?= $postClient['siret_client'] ?>&amp;denomination_client=<?= $postClient['denomination_client'] ?>">Modifier les informations de la Déontologie</a>
 </br>
+<table class="table table-deontologie-client">
+<thead>
+    <tr>
+        <th scope="col">Existence acte d'engagement : </th>
+        <th scope="col">date de signature de l'acte d'engagement :</th>
+        <th scope="col">Commentaire libre sur convention : </th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><?= $postDeontologieClient['boolean_acte_engagement'];?></td>
+        <td><?= $postDeontologieClient['date_signature_acte_fr'];?></td>
+        <td><?= $postDeontologieClient['zone_rem_sanction'];?></td>
+    </tr>  
+</tbody>
+</table>
+<a href="index.php?action=lireHistoriqueSuiviDeontologie&amp;siret_client=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi de la déontologie du client</a>
+<table class="table table-suivi-deontologie">
+<thead>
+    <tr>
+        <th scope="col">Date du commentaire : </th>
+        <th scope="col">Auteur du commentaire : </th>
+        <th scope="col">Statut du commentaire : </th>
+        <th scope="col">Remarques du commentaire : </th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><?= $postSuiviDeontologie['datetime_deon_fr'];?></td>
+        <td><?= $postSuiviDeontologie['auteur_deon'];?></td>
+        <td><?= $postSuiviDeontologie['statut_deon'];?></td>
+        <td><?= $postSuiviDeontologie['commentaire_deon'];?></td>
+    </tr>  
+</tbody>
+</table>
 
 <?php $content = ob_get_clean(); ?>
 

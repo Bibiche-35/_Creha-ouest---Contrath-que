@@ -8,6 +8,8 @@ require_once('model/DepartementManager.php');
 require_once('model/SuiviClientManager.php');
 require_once('model/ConventionManager.php');
 require_once('model/SuiviConventionManager.php');
+require_once('model/DeontologieManager.php');
+require_once('model/SuiviDeontologieManager.php');
 
 // Ce contrôleur récupère toutes les informations qu'il a besoin pour lire tous les clients avec des champs définis et les transmet au modèle : listeDesClients()
 function listeClients()
@@ -35,6 +37,8 @@ function detailClient()
     $postSuiviClient = $suiviClientManager->readDernierSuiviClient($_GET['siret_client']);
     $postConventionClient = $conventionClient->readDetailConvention($_GET['siret_client']);
     $postSuiviConvention = $suiviConventionClient->readDernierSuiviConvention($_GET['siret_client']);
+    $postDeontologieClient = $deontologieClient->readDetailDeontologie($_GET['siret_client']);
+    $postSuiviDeontologie = $suiviDeontologieClient->readDernierSuiviDeontologie($_GET['siret_client']);
 
     require('view/frontend/detailClientView.php');
 }
