@@ -165,7 +165,7 @@
     <tr>
         <th scope="col">Existence acte d'engagement : </th>
         <th scope="col">date de signature de l'acte d'engagement :</th>
-        <th scope="col">Commentaire libre sur convention : </th>
+        <th scope="col">Commentaire libre sur Deontologie : </th>
     </tr>
 </thead>
 <tbody>

@@ -14,7 +14,7 @@ class DeontologieManager extends DB
         // Connexion à la base de données rappelle de la fonction
         $db = $this->getPDO();
     
-        $req = $db->prepare('SELECT DATE_FORMAT(date_signature_acte, \'%d/%m/%Y\') AS date_signature_acte_fr, boolean_acte_engagement, zone_rem_sanction FROM informations_deontologie WHERE siret_info_deontologie = ? ');
+        $req = $db->prepare('SELECT DATE_FORMAT(date_signature_acte, \'%d/%m/%Y\') AS date_signature_acte_fr, boolean_acte_engagement, zone_rem_sanction, date_signature_acte FROM informations_deontologie WHERE siret_info_deontologie = ? ');
         $req->execute(array($siret_client)); 
         $postDeontologieClient = $req->fetch();   
 
@@ -27,7 +27,7 @@ class DeontologieManager extends DB
         // Connexion à la base de données rappelle de la fonction
         $db = $this->getPDO();
         
-        $req = $db->prepare('UPDATE informations_deontologie SET boolean_acte_engagement = ?, date_signature_acte = ?, zone_rem_sanction = ? WHERE siret_info_convention = ?');
+        $req = $db->prepare('UPDATE informations_deontologie SET boolean_acte_engagement = ?, date_signature_acte = ?, zone_rem_sanction = ? WHERE siret_info_deontologie = ?');
         $postDeontologie = $req->execute(array($boolean_acte_engagement, $date_signature_acte, $zone_rem_sanction, $siret_client));
         
         return $postDeontologie;

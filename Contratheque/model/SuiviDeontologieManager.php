@@ -27,7 +27,7 @@ class SuiviDeontologieManager extends DB
         // Connexion à la base de données rappelle de la fonction
         $db = $this->getPDO();
         
-        $req = $db->prepare('SELECT auteur_deon, statut_deon, suivi_deontologie.commentaire_deon, siret_info_deontologie DATE_FORMAT(datetime_deon, \'%d/%m/%Y %Hh%imin%ss\') AS datetime_deon_fr FROM suivi_deontologie, informations_deontologie WHERE id_info_engagement = id_info_suivi_deontologie AND siret_info_deontologie = ? ORDER BY datetime_conv_fr DESC');
+        $req = $db->prepare('SELECT auteur_deon, statut_deon, suivi_deontologie.commentaire_deon, siret_info_deontologie, DATE_FORMAT(datetime_deon, \'%d/%m/%Y %Hh%imin%ss\') AS datetime_deon_fr FROM suivi_deontologie, informations_deontologie WHERE id_info_engagement = id_info_suivi_engagement AND siret_info_deontologie = ? ORDER BY datetime_deon_fr DESC');
         $req->execute(array($siret_client)); 
         $postHistoriqueSuiviConvention = $req->fetchAll();   
 

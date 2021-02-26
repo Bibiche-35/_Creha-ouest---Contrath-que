@@ -86,7 +86,7 @@ function formulaireModificationConvention()
     require('view/frontend/modifierConventionView.php');
 }
 
-// Ce contrôleur récupère toutes les informations qu'il a besoin pour modifier le client et tous ses champs et les transmet au modèle : updateDetailClient
+// Ce contrôleur récupère toutes les informations qu'il a besoin pour modifier le suivi convention du client (avec tous ses champs) et les transmet au modèle : updateDetailConvention
 function modifierConvention($siret_client, $nbreres_principales_conv, $nbrelog_sociaux_conv, $calcul_estimatif_conv, $boolean_convention, $date_debut_conv, $date_fin_conv, $durée_mois_conv, $montant_annuel_conv, $commentaire_conv, $lien_conv)
 {
     $conventionManager = new \Contratheque\Model\ConventionManager();
@@ -110,7 +110,38 @@ function listeSuiviConvention()
     require('view/frontend/historiqueSuiviConventionView.php');
 }
 
+function formulaireModificationDeontologie()
+{
+    $postManager = new \Contratheque\Model\DeontologieManager();
 
+    $postDeontologieClient = $postManager->readDetailDeontologie($_GET['siret_client']);
+
+    require('view/frontend/modifierDeontologieView.php');
+}
+
+// Ce contrôleur récupère toutes les informations qu'il a besoin pour modifier le suivi deontologie du client (avec tous ses champs) et les transmet au modèle : updateDetailDeontologie
+function modifierDeontologie($siret_client, $boolean_acte_engagement, $date_signature_acte_fr, $zone_rem_sanction)
+{
+    $conventionManager = new \Contratheque\Model\DeontologieManager();
+  
+    $postConvention = $conventionManager->updateDetailDeontologie($_GET['siret_client'], $_POST['boolean_acte_engagement'], $_POST['date_signature_acte_fr'], $_POST['zone_rem_sanction']);
+
+    if ($postConvention === false) {
+  
+        throw new Exception('Impossible de modifier le commentaire !');
+    }
+}
+
+// Ce contrôleur récupère toutes les informations qu'il a besoin pour afficher l'historique du suivi convention d'un client et les transmet au modèle : detailClient($_GET['siret'])
+function listeSuiviDeontologie()
+{
+
+    $historiqueSuiviDeontologieManager = new \Contratheque\model\SuiviDeontologieManager();
+    
+    $historiqueSuiviDeontologie = $historiqueSuiviDeontologieManager->readHistoriqueSuiviDeontologie($_GET['siret_client']);
+
+    require('view/frontend/historiqueSuiviDeontologieView.php');
+}
 
 
 
