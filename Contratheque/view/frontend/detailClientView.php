@@ -3,7 +3,6 @@
 
 <?php ob_start(); ?>
 <h1>Ma super contrathèque !</h1>
-<p><a href="index.php?action=listeClients">Retour à la liste des clients</a></p>
 
 <p>Détail du client :</p>
 <a href="index.php?action=modificationClient&amp;siret_client=<?= $postClient['siret_client'] ?>">Modifier les informations du client</a>
@@ -274,4 +273,4 @@
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('template/template.php'); ?>
