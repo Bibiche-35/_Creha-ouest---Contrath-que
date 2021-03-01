@@ -196,6 +196,82 @@
 </tbody>
 </table>
 
+<p>Détail du dossier technique du client :</p>
+<a href="index.php?action=modificationTechnique&amp;siret_client=<?= $postClient['siret_client'] ?>&amp;denomination_client=<?= $postClient['denomination_client'] ?>">Modifier les informations du dossier technique</a>
+</br>
+<table class="table table-technique-client">
+<thead>
+    <tr>
+        <th scope="col">Nbre d'utilisateurs : </th>
+        <th scope="col">Saisie Boolean : </th>
+        <th scope="col">Consultation Boolean : </th>
+        <th scope="col">Statistiques Boolean : </th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><?= $postTechniqueClient['nbre_utilisateurs'];?></td>
+        <td><?= $postTechniqueClient['saisie_bool'];?></td>
+        <td><?= $postTechniqueClient['consultation_bool'];?></td>
+        <td><?= $postTechniqueClient['statistiques_bool'];?></td>
+    </tr>  
+</tbody>
+</table>
+<a href="index.php?action=lireHistoriqueSuiviTechnique&amp;siret_client=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi du dossier technique du client</a>
+<table class="table table-suivi-technique">
+<thead>
+    <tr>
+        <th scope="col">Date du commentaire : </th>
+        <th scope="col">Auteur du commentaire : </th>
+        <th scope="col">Statut du commentaire : </th>
+        <th scope="col">Remarques du commentaire : </th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><?= $postSuiviTechnique['datetime_tech_fr'];?></td>
+        <td><?= $postSuiviTechnique['auteur_tech'];?></td>
+        <td><?= $postSuiviTechnique['statut_tech'];?></td>
+        <td><?= $postSuiviTechnique['commentaire_tech'];?></td>
+    </tr>  
+</tbody>
+</table>
+
+<p>Détail de la prospection du client :</p>
+<a href="index.php?action=modificationProspection&amp;siret_client=<?= $postClient['siret_client'] ?>&amp;denomination_client=<?= $postClient['denomination_client'] ?>">Modifier les informations de la prospection</a>
+</br>
+<table class="table table-prospection-client">
+<thead>
+    <tr>
+        <th scope="col">Champ libre Prospection : </th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><?= $postProspectionClient['zone_rem_pros'];?></td>
+    </tr>  
+</tbody>
+</table>
+<a href="index.php?action=lireHistoriqueSuiviTechnique&amp;siret_client=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi du dossier prospection du client</a>
+<table class="table table-suivi-prospection">
+<thead>
+    <tr>
+        <th scope="col">Date du commentaire : </th>
+        <th scope="col">Auteur du commentaire : </th>
+        <th scope="col">Statut du commentaire : </th>
+        <th scope="col">Remarques du commentaire : </th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><?= $postSuiviProspection['datetime_pros_fr'];?></td>
+        <td><?= $postSuiviProspection['auteur_pros'];?></td>
+        <td><?= $postSuiviProspection['statut_pros'];?></td>
+        <td><?= $postSuiviProspection['commentaire_pros'];?></td>
+    </tr>  
+</tbody>
+</table>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

@@ -7,7 +7,7 @@
 
 <p><a href="index.php?action=detailClient&amp;siret_client=<?= $_GET['siret_client'] ?>">Retour au client</a></p>
 
-<p>Historiques des modifications de la déontologie du client :</p>
+<p>Historiques des modifications du dossier Prospection du client :</p>
 <p>Siret du Client concerné :<?= $_GET['siret_client'] ?></p>
 
 <table class="table table-striped">
@@ -20,12 +20,12 @@
     </tr>
 </thead>
 <tbody>
-<?php foreach($historiqueSuiviDeontologie as $detail) :?>  
+<?php foreach($historiqueSuiviProspection as $detail) :?>  
     <tr>
-        <td><?= $detail['auteur_deon'];?></td>
-        <td><?= $detail['statut_deon'];?></td>
-        <td><?= $detail['commentaire_deon'];?></td>
-        <td><?= $detail['datetime_deon_fr'];?> </td>
+        <td><?= $detail['auteur_pros'];?></td>
+        <td><?= $detail['statut_pros'];?></td>
+        <td><?= $detail['commentaire_pros'];?></td>
+        <td><?= $detail['datetime_pros_fr'];?> </td>
     </tr>
 <?php endforeach ?>  
 </tbody>

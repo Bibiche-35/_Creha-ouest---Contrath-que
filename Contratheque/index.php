@@ -102,6 +102,62 @@ try { // On essaie de faire des choses
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        elseif ($_GET['action'] == 'modificationTechnique') {
+            if ((isset($_GET['siret_client']) && $_GET['siret_client'] > 0) || (isset($_GET['denomination_client']) && $_GET['denomination_client'] > 0)) {
+                formulaireModificationTechnique();
+            }
+            else {
+                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+        elseif ($_GET['action'] == 'modifierTechnique') {
+            if ((isset($_GET['siret_client']) && $_GET['siret_client'] > 0) || (isset($_GET['denomination_client']) && $_GET['denomination_client'] > 0)) {
+                modifierTechnique($_GET['siret_client'], $_POST['nbre_utilisateurs'], $_POST['saisie_bool'], $_POST['consultation_bool'], $_POST['statistiques_bool']);
+                formulaireModificationTechnique();
+            }
+            else {
+                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }    
+        elseif ($_GET['action'] == 'lireHistoriqueSuiviTechnique') {
+            if (isset($_GET['siret_client']) && $_GET['siret_client'] > 0) {
+                listeSuiviTechnique();
+            }
+            else {
+                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+        elseif ($_GET['action'] == 'modificationProspection') {
+            if ((isset($_GET['siret_client']) && $_GET['siret_client'] > 0) || (isset($_GET['denomination_client']) && $_GET['denomination_client'] > 0)) {
+                formulaireModificationProspection();
+            }
+            else {
+                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+        elseif ($_GET['action'] == 'modifierProspection') {
+            if ((isset($_GET['siret_client']) && $_GET['siret_client'] > 0) || (isset($_GET['denomination_client']) && $_GET['denomination_client'] > 0)) {
+                modifierProspection($_GET['siret_client'], $_POST['zone_rem_pros']);
+                formulaireModificationProspection();
+            }
+            else {
+                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }    
+        elseif ($_GET['action'] == 'lireHistoriqueSuiviProspection') {
+            if (isset($_GET['siret_client']) && $_GET['siret_client'] > 0) {
+                listeSuiviProspection();
+            }
+            else {
+                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
     }
     else {
         listeClients();

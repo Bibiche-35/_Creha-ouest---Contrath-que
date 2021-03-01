@@ -10,6 +10,10 @@ require_once('model/ConventionManager.php');
 require_once('model/SuiviConventionManager.php');
 require_once('model/DeontologieManager.php');
 require_once('model/SuiviDeontologieManager.php');
+require_once('model/TechniqueManager.php');
+require_once('model/SuiviTechniqueManager.php');
+require_once('model/ProspectionManager.php');
+require_once('model/SuiviProspectionManager.php');
 
 // Ce contrôleur récupère toutes les informations qu'il a besoin pour lire tous les clients avec des champs définis et les transmet au modèle : listeDesClients()
 function listeClients()
@@ -30,6 +34,10 @@ function detailClient()
     $suiviConventionClient = new \Contratheque\model\SuiviConventionManager();
     $deontologieClient = new \Contratheque\model\DeontologieManager();
     $suiviDeontologieClient = new \Contratheque\model\SuiviDeontologieManager();
+    $techniqueClient = new \Contratheque\model\TechniqueManager();
+    $suiviTechniqueClient = new \Contratheque\model\SuiviTechniqueManager();
+    $prospectionClient = new \Contratheque\model\ProspectionManager();
+    $suiviProspectionClient = new \Contratheque\model\SuiviProspectionManager();
 
     
     $postClient = $postManager->readDetailClient($_GET['siret_client']);
@@ -39,6 +47,10 @@ function detailClient()
     $postSuiviConvention = $suiviConventionClient->readDernierSuiviConvention($_GET['siret_client']);
     $postDeontologieClient = $deontologieClient->readDetailDeontologie($_GET['siret_client']);
     $postSuiviDeontologie = $suiviDeontologieClient->readDernierSuiviDeontologie($_GET['siret_client']);
+    $postTechniqueClient = $techniqueClient->readDetailTechnique($_GET['siret_client']);
+    $postSuiviTechnique = $suiviTechniqueClient->readDernierSuiviTechnique($_GET['siret_client']);
+    $postProspectionClient = $prospectionClient->readDetailProspection($_GET['siret_client']);
+    $postSuiviProspection = $suiviProspectionClient->readDernierSuiviProspection($_GET['siret_client']);
 
     require('view/frontend/detailClientView.php');
 }
@@ -143,5 +155,69 @@ function listeSuiviDeontologie()
     require('view/frontend/historiqueSuiviDeontologieView.php');
 }
 
+function formulaireModificationTechnique()
+{
+    $postManager = new \Contratheque\Model\TechniqueManager();
 
+    $postTechniqueClient = $postManager->readDetailTechnique($_GET['siret_client']);
+
+    require('view/frontend/modifierTechniqueView.php');
+}
+
+// Ce contrôleur récupère toutes les informations qu'il a besoin pour modifier le suivi Technique du client (avec tous ses champs) et les transmet au modèle : updateDetailTechnique
+function modifierTechnique($siret_client, $nbre_utilisateurs, $saisie_bool, $consultation_bool, $statistiques_bool)
+{
+    $techniqueManager = new \Contratheque\Model\TechniqueManager();
+  
+    $postTechnique = $techniqueManager->updateDetailTechnique($_GET['siret_client'], $_POST['nbre_utilisateurs'], $_POST['saisie_bool'], $_POST['consultation_bool'], $_POST['statistiques_bool']);
+
+    if ($postTechnique === false) {
+  
+        throw new Exception('Impossible de modifier le commentaire !');
+    }
+}
+
+// Ce contrôleur récupère toutes les informations qu'il a besoin pour afficher l'historique du suivi Technique d'un client et les transmet au modèle : detailClient($_GET['siret'])
+function listeSuiviTechnique()
+{
+
+    $historiqueSuiviTechniqueManager = new \Contratheque\model\SuiviTechniqueManager();
+    
+    $historiqueSuiviTechnique = $historiqueSuiviTechniqueManager->readHistoriqueSuiviTechnique($_GET['siret_client']);
+
+    require('view/frontend/historiqueSuiviTechniqueView.php');
+}
+
+function formulaireModificationProspection()
+{
+    $postManager = new \Contratheque\Model\ProspectionManager();
+
+    $postProspectionClient = $postManager->readDetailProspection($_GET['siret_client']);
+
+    require('view/frontend/modifierProspectionView.php');
+}
+
+// Ce contrôleur récupère toutes les informations qu'il a besoin pour modifier le suivi Technique du client (avec tous ses champs) et les transmet au modèle : updateDetailTechnique
+function modifierProspection($siret_client, $zone_rem_pros)
+{
+    $prospectionManager = new \Contratheque\Model\ProspectionManager();
+  
+    $postProspection = $prospectionManager->updateDetailProspection($_GET['siret_client'], $_POST['	zone_rem_pros']);
+
+    if ($postProspection === false) {
+  
+        throw new Exception('Impossible de modifier le commentaire !');
+    }
+}
+
+// Ce contrôleur récupère toutes les informations qu'il a besoin pour afficher l'historique du suivi Technique d'un client et les transmet au modèle : detailClient($_GET['siret'])
+function listeSuiviProspection()
+{
+
+    $historiqueSuiviProspectionManager = new \Contratheque\model\SuiviProspectionManager();
+    
+    $historiqueSuiviProspection = $historiqueSuiviProspectionManager->readHistoriqueSuiviProspection($_GET['siret_client']);
+
+    require('view/frontend/historiqueSuiviProspectionView.php');
+}
 

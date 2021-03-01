@@ -20,8 +20,6 @@
     </tr>
 </thead>
 <tbody>
-<!-- TODO #1 boucler sur le tableau $bookList contenant tous les livres
-(supprimez ces 2 lignes d'exemple) -->
 <?php foreach($historiqueSuiviClient as $detail) :?>  
     <tr>
         <td><?= $detail['auteur_client'];?></td>
