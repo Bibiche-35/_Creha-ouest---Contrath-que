@@ -24,6 +24,16 @@ function listeClients()
     require('view/frontend/listeClientsView.php');
 }
 
+// Ce contrôleur récupère toutes les informations qu'il a besoin pour lire tous les clients avec des champs définis et les transmet au modèle : listeDesClients()
+function rechercheDenominationClient()
+{
+    $denomination_client = $_POST['recherchedenomination'];
+    $postManager = new \Contratheque\Model\ClientManager(); // Création d'un objet
+    $postClients = $postManager->readDenominationClients($denomination_client); // Appel d'une fonction de cet objet
+
+    require('view/frontend/listeClientsView.php');
+}
+
 // Ce contrôleur récupère toutes les informations qu'il a besoin lire le client avec tous ses champs sans exception et les transmet au modèle : detailClient($_GET['siret'])
 function detailClient()
 {
@@ -53,6 +63,15 @@ function detailClient()
     $postSuiviProspection = $suiviProspectionClient->readDernierSuiviProspection($_GET['siret_client']);
 
     require('view/frontend/detailClientView.php');
+}
+
+function listeConventionsclients()
+{
+    $conventionsClients = new \Contratheque\model\ConventionManager();
+
+    $listeConventionsClients = $conventionsClients->readConventionsClients();
+
+    require('view/frontend/detailConventionsView.php');
 }
 
 function formulaireModificationClient()

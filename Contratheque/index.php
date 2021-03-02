@@ -9,6 +9,18 @@ try { // On essaie de faire des choses
         if ($_GET['action'] == 'listeClients') {
             listeClients();
         }
+        elseif ($_GET['action'] == 'rechercheClients') {
+            if (isset($_POST['recherchedenomination'])) {
+                rechercheDenominationClient();
+            }
+            else {
+                // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        }
+        elseif ($_GET['action'] == 'accederConventions') {
+                listeConventionsclients();
+        }
         elseif ($_GET['action'] == 'detailClient') {
             if (isset($_GET['siret_client']) && $_GET['siret_client'] > 0) {
                 detailClient();
