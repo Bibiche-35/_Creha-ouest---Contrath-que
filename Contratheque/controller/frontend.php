@@ -129,7 +129,11 @@ function modifierConvention($siret_client, $nbreres_principales_conv, $nbrelog_s
   
     $postConvention = $conventionManager->updateDetailConvention($_GET['siret_client'], $_POST['nbreres_principales_conv'], $_POST['nbrelog_sociaux_conv'], $_POST['calcul_estimatif_conv'], $_POST['boolean_convention'], $_POST['date_debut_conv_fr'], $_POST['date_fin_conv_fr'], $_POST['durée_mois_conv'], $_POST['montant_annuel_conv'], $_POST['commentaire_conv'], $_POST['lien_conv']);
 
-    if ($postConvention === false) {
+    $postSuiviManager = new \Contratheque\Model\SuiviConventionManager();
+
+    $postSuiviConventionClient = $postSuiviManager->createSuiviDeontologie($_POST['auteur_deon'], $_POST['statut_deon'], $_POST['commentaire_deon'], $_GET['siret_client']);
+
+    if ($postConvention === false || $postSuiviConventionClient ) {
   
         throw new Exception('Impossible de modifier le commentaire !');
     }

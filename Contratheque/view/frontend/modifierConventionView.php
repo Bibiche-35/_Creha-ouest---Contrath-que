@@ -8,9 +8,9 @@
 
 <form action="index.php?action=modifierConvention&amp;siret_client=<?= $_GET['siret_client'] ?>" method="post">
     <div>
-        <h5>
+        <h3>
             <p>Siret du client : <?= $_GET['siret_client'] ?></p>
-        </h5>
+        </h3>
 
         <label for="nbreres_principales_conv">Nbre de résidences principales : </label><input id="nbreres_principales_conv" type="text" name="nbreres_principales_conv" value="<?= $postConventionClient['nbreres_principales_conv'] ?>"></br>
         <label for="nbrelog_sociaux_conv">Nbre de logements sociaux : </label><input id="nbrelog_sociaux_conv" type="text" name="nbrelog_sociaux_conv" value="<?= $postConventionClient['nbrelog_sociaux_conv']; ?>"></br>
@@ -22,7 +22,15 @@
         <label for="montant_annuel_conv">Montannt Annuel : </label><input id="montant_annuel_conv" type="text" name="montant_annuel_conv" value="<?= $postConventionClient['montant_annuel_conv'] ?>"></br>
         <label for="commentaire_conv">Commentaire libre sur convention : </label><input id="commentaire_conv" type="text" name="commentaire_conv" value="<?= $postConventionClient['commentaire_conv'] ?>"></br>
         <label for="lien_conv">Lien Réseau vers convention : </label><input id="lien_conv" type="text" name="lien_conv" value="<?= $postConventionClient['lien_conv'] ?>"></br>
-    </div>
+    </div></br>
+    <h3>
+        Rensignements obligatoires :
+    </h3>
+    <div>
+        <label for="auteur_deon">Auteur du commentaire : </label><input id="auteur_deon" type="text" name="auteur_deon"></br>
+        <label for="statut_deon">Statut du commentaire : </label><input id="statut_deon" type="text" name="statut_deon"></br>
+        <label for="commentaire_deon">Commentaire : </label><input id="commentaire_deon" type="text" name="commentaire_deon"></br>
+    </div></br>
     <div>
         <input type="submit" value="Enregistrer les modifications" />
     </div>
@@ -31,4 +39,4 @@
   
 <?php $content = ob_get_clean(); ?>
   
-<?php require('../contratheque/view/template/template.php'); ?>'); ?>
+<?php require('../contratheque/view/template/template.php'); ?>

@@ -33,4 +33,16 @@ class SuiviConventionManager extends DB
 
         return $postHistoriqueSuiviConvention;
         }
+
+    // fonction pour Afficher l'historique des commentaires de modification du client en fonction de son SIRET
+    public function createSuiviDeontologie($auteur_deon, $statut_deon, $commentaire_deon, $siret_client)
+        {
+        // Connexion à la base de données rappelle de la fonction
+        $db = $this->getPDO();
+        
+        $req = $db->prepare('INSERT INTO suivi_deontologie(datetime_deon_fr, auteur_deon, statut_deon, commentaire_deon, id_info_suivi_convention) VALUES(NOW(), ?, ?, ? ) WHERE informations_convention.id_info_convention = suivi_convention.id_info_suivi_convention AND informations_convention.siret_info_convention = ? ') ; 
+        $createSuiviConvention = $req->execute(array($auteur_deon, $statut_deon, $commentaire_deon, $siret_client)); 
+
+        return $createSuiviConvention;
+        }
 }

@@ -10,6 +10,43 @@ table {
 }
 
 .image {
-    width: 50px;
-    height: 50%;
+    flex-grow : 1;
+    width: 50%;
+    height: 80px;
+    border-radius: 10px;
+}
+
+.styled {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 0.6rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color:rgb(25, 0, 255);
+}
+.styled:hover {
+    background-color:blue;
+}
+
+a {
+    color: red;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+fieldset {
+    width: 200px;
+    height: 80px;
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    height: 80px;
+    display: flex;
+    justify-content:center;
 }
