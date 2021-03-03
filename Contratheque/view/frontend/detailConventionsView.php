@@ -1,5 +1,5 @@
 <!-- Ceci est la Vue de la page d'accueil. Elle affiche la page : Affichage -->
-<?php $title = 'Mon blog'; ?>
+<?php $title = 'Contrathèque'; ?>
 
 <?php ob_start(); ?>
 <h1>Ma super contrathèque !</h1>

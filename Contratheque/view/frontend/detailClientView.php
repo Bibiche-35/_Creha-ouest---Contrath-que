@@ -64,7 +64,7 @@
 </table>
 </br>
 
-<p>Détail des départemetns associés au Client :</p>
+<p>Détail des départements associés au Client :</p>
 <table class="table table-departements">
 <thead>
     <tr>
@@ -81,6 +81,61 @@
 <?php endforeach ?>
 </tbody>  
 </table>
+
+<p>Contact principal Client :</p>
+<table class="table table-contactPrincipal">
+<thead>
+    <tr>
+        <th scope="col">Nom : </th>
+        <th scope="col">Prénom : </th>
+        <th scope="col">Fonction :</th>
+        <th scope="col">Téléphone fixe : </th>
+        <th scope="col">Téléphone portable : </th>
+        <th scope="col">E-mail : </th>
+        <th scope="col">Remarque : </th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><?= $postContactPrincipalClient['nom_contact'];?></td>
+        <td><?= $postContactPrincipalClient['prenom_contact'];?></td>
+        <td><?= $postContactPrincipalClient['nom_fonction'];?></td>
+        <td><?= $postContactPrincipalClient['telfixe_contact'];?></td>
+        <td><?= $postContactPrincipalClient['telport_contact'];?></td>
+        <td><?= $postContactPrincipalClient['email_contact'];?></td>
+        <td><?= $postContactPrincipalClient['remarque_contact'];?></td>
+    </tr>  
+</tbody>
+</table>
+
+<p>Contact facturation Client :</p>
+<table class="table table-contactFacturation">
+<thead>
+    <tr>
+        <th scope="col">Nom : </th>
+        <th scope="col">Prénom : </th>
+        <th scope="col">Fonction :</th>
+        <th scope="col">Téléphone fixe : </th>
+        <th scope="col">Téléphone portable : </th>
+        <th scope="col">E-mail : </th>
+        <th scope="col">Remarque : </th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><?= $postContactFacturationClient['nom_contact'];?></td>
+        <td><?= $postContactFacturationClient['prenom_contact'];?></td>
+        <td><?= $postContactFacturationClient['nom_fonction'];?></td>
+        <td><?= $postContactFacturationClient['telfixe_contact'];?></td>
+        <td><?= $postContactFacturationClient['telport_contact'];?></td>
+        <td><?= $postContactFacturationClient['email_contact'];?></td>
+        <td><?= $postContactFacturationClient['remarque_contact'];?></td>
+    </tr>  
+</tbody>
+</table>
+
+
+
 </br>  
 <a href="index.php?action=lireHistoriqueSuiviClient&amp;siret_client=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi client</a>
 <table class="table table-suivi-client">

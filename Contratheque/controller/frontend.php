@@ -14,6 +14,7 @@ require_once('model/TechniqueManager.php');
 require_once('model/SuiviTechniqueManager.php');
 require_once('model/ProspectionManager.php');
 require_once('model/SuiviProspectionManager.php');
+require_once('model/ContactManager.php');
 
 // Ce contrôleur récupère toutes les informations qu'il a besoin pour lire tous les clients avec des champs définis et les transmet au modèle : listeDesClients()
 function listeClients()
@@ -48,6 +49,8 @@ function detailClient()
     $suiviTechniqueClient = new \Contratheque\model\SuiviTechniqueManager();
     $prospectionClient = new \Contratheque\model\ProspectionManager();
     $suiviProspectionClient = new \Contratheque\model\SuiviProspectionManager();
+    $contactPrincipalClient = new \Contratheque\model\ContactManager();
+    $contactFacturationClient = new \Contratheque\model\ContactManager();
 
     
     $postClient = $postManager->readDetailClient($_GET['siret_client']);
@@ -61,6 +64,8 @@ function detailClient()
     $postSuiviTechnique = $suiviTechniqueClient->readDernierSuiviTechnique($_GET['siret_client']);
     $postProspectionClient = $prospectionClient->readDetailProspection($_GET['siret_client']);
     $postSuiviProspection = $suiviProspectionClient->readDernierSuiviProspection($_GET['siret_client']);
+    $postContactPrincipalClient = $contactPrincipalClient->readContactContratClient($_GET['siret_client']);
+    $postContactFacturationClient = $contactFacturationClient->readContactFacturationClient($_GET['siret_client']);
 
     require('view/frontend/detailClientView.php');
 }
