@@ -53,19 +53,19 @@ function detailClient()
     $contactFacturationClient = new \Contratheque\model\ContactManager();
 
     
-    $postClient = $postManager->readDetailClient($_GET['siret_client']);
-    $postDepartements = $departementManager->readDepartements($_GET['siret_client']);
-    $postSuiviClient = $suiviClientManager->readDernierSuiviClient($_GET['siret_client']);
-    $postConventionClient = $conventionClient->readDetailConvention($_GET['siret_client']);
-    $postSuiviConvention = $suiviConventionClient->readDernierSuiviConvention($_GET['siret_client']);
-    $postDeontologieClient = $deontologieClient->readDetailDeontologie($_GET['siret_client']);
-    $postSuiviDeontologie = $suiviDeontologieClient->readDernierSuiviDeontologie($_GET['siret_client']);
-    $postTechniqueClient = $techniqueClient->readDetailTechnique($_GET['siret_client']);
-    $postSuiviTechnique = $suiviTechniqueClient->readDernierSuiviTechnique($_GET['siret_client']);
-    $postProspectionClient = $prospectionClient->readDetailProspection($_GET['siret_client']);
-    $postSuiviProspection = $suiviProspectionClient->readDernierSuiviProspection($_GET['siret_client']);
-    $postContactPrincipalClient = $contactPrincipalClient->readContactContratClient($_GET['siret_client']);
-    $postContactFacturationClient = $contactFacturationClient->readContactFacturationClient($_GET['siret_client']);
+    $postClient = $postManager->readDetailClient($_GET['siret']);
+    $postDepartements = $departementManager->readDepartements($_GET['siret']);
+    $postSuiviClient = $suiviClientManager->readDernierSuiviClient($_GET['siret']);
+    $postConventionClient = $conventionClient->readDetailConvention($_GET['siret']);
+    $postSuiviConvention = $suiviConventionClient->readDernierSuiviConvention($_GET['siret']);
+    $postDeontologieClient = $deontologieClient->readDetailDeontologie($_GET['siret']);
+    $postSuiviDeontologie = $suiviDeontologieClient->readDernierSuiviDeontologie($_GET['siret']);
+    $postTechniqueClient = $techniqueClient->readDetailTechnique($_GET['siret']);
+    $postSuiviTechnique = $suiviTechniqueClient->readDernierSuiviTechnique($_GET['siret']);
+    $postProspectionClient = $prospectionClient->readDetailProspection($_GET['siret']);
+    $postSuiviProspection = $suiviProspectionClient->readDernierSuiviProspection($_GET['siret']);
+    $postContactPrincipalClient = $contactPrincipalClient->readContactContratClient($_GET['siret']);
+    $postContactFacturationClient = $contactFacturationClient->readContactFacturationClient($_GET['siret']);
 
     require('view/frontend/detailClientView.php');
 }
@@ -83,7 +83,7 @@ function formulaireModificationClient()
 {
     $postManager = new \Contratheque\Model\ClientManager();
 
-    $postClient = $postManager->readDetailClient($_GET['siret_client']);
+    $postClient = $postManager->readDetailClient($_GET['siret']);
 
     require('view/frontend/modifierClientView.php');
 }
@@ -94,7 +94,7 @@ function modifierClient($siret_client, $denomination_client, $adresse1_siege, $a
 {
     $clientManager = new \Contratheque\Model\ClientManager();
   
-    $postClient = $clientManager->updateDetailClient($_GET['siret_client'], $_POST['denomination_client'], $_POST['adresse1_siege'], $_POST['adresse2_siege'], $_POST['adresse3_siege'], $_POST['BP_CS_siege'], $_POST['code_postal_siege'], $_POST['ville_siege'], $_POST['pays_siege'], $_POST['site_internet_siege'], $_POST['email_siege'], $_POST['telephone_siege'], $_POST['champlibre_chorus'], $_POST['adresse1_fact'], $_POST['adresse2_fact'], $_POST['adresse3_fact'], $_POST['BP_CS_fact'], $_POST['code_postal_fact'], $_POST['ville_fact'], $_POST['pays_fact'], $_POST['email_fact'], $_POST['telephone_fact']);
+    $postClient = $clientManager->updateDetailClient($_GET['siret'], $_POST['denomination_client'], $_POST['adresse1_siege'], $_POST['adresse2_siege'], $_POST['adresse3_siege'], $_POST['BP_CS_siege'], $_POST['code_postal_siege'], $_POST['ville_siege'], $_POST['pays_siege'], $_POST['site_internet_siege'], $_POST['email_siege'], $_POST['telephone_siege'], $_POST['champlibre_chorus'], $_POST['adresse1_fact'], $_POST['adresse2_fact'], $_POST['adresse3_fact'], $_POST['BP_CS_fact'], $_POST['code_postal_fact'], $_POST['ville_fact'], $_POST['pays_fact'], $_POST['email_fact'], $_POST['telephone_fact']);
 
     if ($postClient === false) {
   
@@ -108,7 +108,7 @@ function listeSuiviClient()
 
     $historiqueSuiviClientManager = new \Contratheque\model\SuiviClientManager();
     
-    $historiqueSuiviClient = $historiqueSuiviClientManager->readHistoriqueSuiviClient($_GET['siret_client']);
+    $historiqueSuiviClient = $historiqueSuiviClientManager->readHistoriqueSuiviClient($_GET['siret']);
 
     require('view/frontend/historiqueSuiviClientView.php');
 }
@@ -117,23 +117,19 @@ function formulaireModificationConvention()
 {
     $postManager = new \Contratheque\Model\ConventionManager();
 
-    $postConventionClient = $postManager->readDetailConvention($_GET['siret_client']);
+    $postConventionClient = $postManager->readDetailConvention($_GET['siret']);
 
     require('view/frontend/modifierConventionView.php');
 }
 
 // Ce contrôleur récupère toutes les informations qu'il a besoin pour modifier le suivi convention du client (avec tous ses champs) et les transmet au modèle : updateDetailConvention
-function modifierConvention($siret_client, $nbreres_principales_conv, $nbrelog_sociaux_conv, $calcul_estimatif_conv, $boolean_convention, $date_debut_conv, $date_fin_conv, $durée_mois_conv, $montant_annuel_conv, $commentaire_conv, $lien_conv)
+function modifierConvention($siret_client, $nbreres_principales_conv, $nbrelog_sociaux_conv, $calcul_estimatif_conv, $boolean_convention, $date_debut_conv, $date_fin_conv, $durée_mois_conv, $montant_annuel_conv, $commentaire_conv, $lien_conv, $auteur_deon, $statut_deon, $commentaire_deon, $id_info_convention)
 {
     $conventionManager = new \Contratheque\Model\ConventionManager();
   
-    $postConvention = $conventionManager->updateDetailConvention($_GET['siret_client'], $_POST['nbreres_principales_conv'], $_POST['nbrelog_sociaux_conv'], $_POST['calcul_estimatif_conv'], $_POST['boolean_convention'], $_POST['date_debut_conv_fr'], $_POST['date_fin_conv_fr'], $_POST['durée_mois_conv'], $_POST['montant_annuel_conv'], $_POST['commentaire_conv'], $_POST['lien_conv']);
+    $postConvention = $conventionManager->updateDetailConvention($_GET['siret'], $_POST['nbreres_principales_conv'], $_POST['nbrelog_sociaux_conv'], $_POST['calcul_estimatif_conv'], $_POST['boolean_convention'], $_POST['date_debut_conv_fr'], $_POST['date_fin_conv_fr'], $_POST['durée_mois_conv'], $_POST['montant_annuel_conv'], $_POST['commentaire_conv'], $_POST['lien_conv'], $_POST['auteur_conv'], $_POST['statut_conv'], $_POST['commentaire_conv'], $_GET['id_conv']);
 
-    $postSuiviManager = new \Contratheque\Model\SuiviConventionManager();
-
-    $postSuiviConventionClient = $postSuiviManager->createSuiviDeontologie($_POST['auteur_deon'], $_POST['statut_deon'], $_POST['commentaire_deon'], $_GET['siret_client']);
-
-    if ($postConvention === false || $postSuiviConventionClient ) {
+    if ($postConvention === false) {
   
         throw new Exception('Impossible de modifier le commentaire !');
     }
@@ -145,7 +141,7 @@ function listeSuiviConvention()
 
     $historiqueSuiviConventionManager = new \Contratheque\model\SuiviConventionManager();
     
-    $historiqueSuiviConvention = $historiqueSuiviConventionManager->readHistoriqueSuiviConvention($_GET['siret_client']);
+    $historiqueSuiviConvention = $historiqueSuiviConventionManager->readHistoriqueSuiviConvention($_GET['siret']);
 
     require('view/frontend/historiqueSuiviConventionView.php');
 }
@@ -154,7 +150,7 @@ function formulaireModificationDeontologie()
 {
     $postManager = new \Contratheque\Model\DeontologieManager();
 
-    $postDeontologieClient = $postManager->readDetailDeontologie($_GET['siret_client']);
+    $postDeontologieClient = $postManager->readDetailDeontologie($_GET['siret']);
 
     require('view/frontend/modifierDeontologieView.php');
 }
@@ -164,7 +160,7 @@ function modifierDeontologie($siret_client, $boolean_acte_engagement, $date_sign
 {
     $conventionManager = new \Contratheque\Model\DeontologieManager();
   
-    $postConvention = $conventionManager->updateDetailDeontologie($_GET['siret_client'], $_POST['boolean_acte_engagement'], $_POST['date_signature_acte_fr'], $_POST['zone_rem_sanction']);
+    $postConvention = $conventionManager->updateDetailDeontologie($_GET['siret'], $_POST['boolean_acte_engagement'], $_POST['date_signature_acte_fr'], $_POST['zone_rem_sanction']);
 
     if ($postConvention === false) {
   
@@ -178,7 +174,7 @@ function listeSuiviDeontologie()
 
     $historiqueSuiviDeontologieManager = new \Contratheque\model\SuiviDeontologieManager();
     
-    $historiqueSuiviDeontologie = $historiqueSuiviDeontologieManager->readHistoriqueSuiviDeontologie($_GET['siret_client']);
+    $historiqueSuiviDeontologie = $historiqueSuiviDeontologieManager->readHistoriqueSuiviDeontologie($_GET['siret']);
 
     require('view/frontend/historiqueSuiviDeontologieView.php');
 }
@@ -187,7 +183,7 @@ function formulaireModificationTechnique()
 {
     $postManager = new \Contratheque\Model\TechniqueManager();
 
-    $postTechniqueClient = $postManager->readDetailTechnique($_GET['siret_client']);
+    $postTechniqueClient = $postManager->readDetailTechnique($_GET['siret']);
 
     require('view/frontend/modifierTechniqueView.php');
 }
@@ -197,7 +193,7 @@ function modifierTechnique($siret_client, $nbre_utilisateurs, $saisie_bool, $con
 {
     $techniqueManager = new \Contratheque\Model\TechniqueManager();
   
-    $postTechnique = $techniqueManager->updateDetailTechnique($_GET['siret_client'], $_POST['nbre_utilisateurs'], $_POST['saisie_bool'], $_POST['consultation_bool'], $_POST['statistiques_bool']);
+    $postTechnique = $techniqueManager->updateDetailTechnique($_GET['siret'], $_POST['nbre_utilisateurs'], $_POST['saisie_bool'], $_POST['consultation_bool'], $_POST['statistiques_bool']);
 
     if ($postTechnique === false) {
   
@@ -211,7 +207,7 @@ function listeSuiviTechnique()
 
     $historiqueSuiviTechniqueManager = new \Contratheque\model\SuiviTechniqueManager();
     
-    $historiqueSuiviTechnique = $historiqueSuiviTechniqueManager->readHistoriqueSuiviTechnique($_GET['siret_client']);
+    $historiqueSuiviTechnique = $historiqueSuiviTechniqueManager->readHistoriqueSuiviTechnique($_GET['siret']);
 
     require('view/frontend/historiqueSuiviTechniqueView.php');
 }
@@ -220,7 +216,7 @@ function formulaireModificationProspection()
 {
     $postManager = new \Contratheque\Model\ProspectionManager();
 
-    $postProspectionClient = $postManager->readDetailProspection($_GET['siret_client']);
+    $postProspectionClient = $postManager->readDetailProspection($_GET['siret']);
 
     require('view/frontend/modifierProspectionView.php');
 }
@@ -230,7 +226,7 @@ function modifierProspection($siret_client, $zone_rem_pros)
 {
     $prospectionManager = new \Contratheque\Model\ProspectionManager();
   
-    $postProspection = $prospectionManager->updateDetailProspection($_GET['siret_client'], $_POST['	zone_rem_pros']);
+    $postProspection = $prospectionManager->updateDetailProspection($_GET['siret'], $_POST['zone_rem_pros']);
 
     if ($postProspection === false) {
   
@@ -244,7 +240,7 @@ function listeSuiviProspection()
 
     $historiqueSuiviProspectionManager = new \Contratheque\model\SuiviProspectionManager();
     
-    $historiqueSuiviProspection = $historiqueSuiviProspectionManager->readHistoriqueSuiviProspection($_GET['siret_client']);
+    $historiqueSuiviProspection = $historiqueSuiviProspectionManager->readHistoriqueSuiviProspection($_GET['siret']);
 
     require('view/frontend/historiqueSuiviProspectionView.php');
 }

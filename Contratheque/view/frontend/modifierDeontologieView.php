@@ -2,14 +2,14 @@
   
 <?php ob_start(); ?>
 <h1>Ma super contrathèque !</h1>
-<p><a href="index.php?action=detailClient&amp;siret_client=<?= $_GET['siret_client'] ?>">Retour au client</a></p>
+<p><a href="index.php?action=detailClient&amp;siret=<?= $_GET['siret'] ?>">Retour au client</a></p>
   
 <h2>Modifier la deontologie du client</h2>
 
-<form action="index.php?action=modifierDeontologie&amp;siret_client=<?= $_GET['siret_client'] ?>" method="post">
+<form action="index.php?action=modifierDeontologie&amp;siret=<?= $_GET['siret'] ?>" method="post">
     <div>
         <h5>
-            <p>Siret du client : <?= $_GET['siret_client'] ?></p>
+            <p>Siret du client : <?= $_GET['siret'] ?></p>
         </h5>
 
         <label for="boolean_acte_engagement">Existence acte d'engagement : </label><input id="boolean_acte_engagement" type="text" name="boolean_acte_engagement" value="<?= $postDeontologieClient['boolean_acte_engagement'] ?>"></br>

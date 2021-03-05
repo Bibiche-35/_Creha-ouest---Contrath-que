@@ -2,11 +2,11 @@
   
 <?php ob_start(); ?>
 <h1>Ma super contrathèque !</h1>
-<p><a href="index.php?action=detailClient&amp;siret_client=<?= $postClient['siret_client'] ?>">Retour au client</a></p>
+<p><a href="index.php?action=detailClient&amp;siret=<?= $postClient['siret_client'] ?>">Retour au client</a></p>
   
 <h2>Modifier un client</h2>
   
-<form action="index.php?action=modifierClient&amp;siret_client=<?= $postClient['siret_client'] ?>" method="post">
+<form action="index.php?action=modifierClient&amp;siret=<?= $postClient['siret_client'] ?>" method="post">
     <div>
         <p>Siret du client : <?= $postClient['siret_client'] ?></p>
         <label for="denomination_client">Dénomination Client : </label><input id="denomination_client" type="text" name="denomination_client" value="<?= $postClient['denomination_client'] ?>"></br>

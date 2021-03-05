@@ -2,14 +2,14 @@
   
 <?php ob_start(); ?>
 <h1>Ma super contrathèque !</h1>
-<p><a href="index.php?action=detailClient&amp;siret_client=<?= $_GET['siret_client'] ?>">Retour au client</a></p>
+<p><a href="index.php?action=detailClient&amp;siret=<?= $_GET['siret'] ?>">Retour au client</a></p>
   
 <h2>Modifier le dossier Technique du client</h2>
 
-<form action="index.php?action=modifierTechnique&amp;siret_client=<?= $_GET['siret_client'] ?>" method="post">
+<form action="index.php?action=modifierTechnique&amp;siret=<?= $_GET['siret'] ?>" method="post">
     <div>
         <h5>
-            <p>Siret du client : <?= $_GET['siret_client'] ?></p>
+            <p>Siret du client : <?= $_GET['siret'] ?></p>
         </h5>
 
         <label for="nbre_utilisateurs">Nbre d'utilisateurs : </label><input id="nbre_utilisateurs" type="text" name="nbre_utilisateurs" value="<?= $postTechniqueClient['nbre_utilisateurs'] ?>"></br>

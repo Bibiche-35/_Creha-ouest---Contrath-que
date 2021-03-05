@@ -5,10 +5,10 @@
 <h1>Ma super contrathèque !</h1>
 <p><a href="index.php?action=listeClients">Retour à la liste des clients</a></p>
 
-<p><a href="index.php?action=detailClient&amp;siret_client=<?= $_GET['siret_client'] ?>">Retour au client</a></p>
+<p><a href="index.php?action=detailClient&amp;siret=<?= $_GET['siret'] ?>">Retour au client</a></p>
 
 <p>Historiques des modifications de la convention du client :</p>
-<p>Siret du Client concerné :<?= $_GET['siret_client'] ?></p>
+<p>Siret du Client concerné :<?= $_GET['siret'] ?></p>
 
 <table class="table table-striped">
 <thead>

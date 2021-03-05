@@ -5,7 +5,7 @@
 <h1>Ma super contrathèque !</h1>
 
 <p>Détail du client :</p>
-<a href="index.php?action=modificationClient&amp;siret_client=<?= $postClient['siret_client'] ?>">Modifier les informations du client</a>
+<a href="index.php?action=modificationClient&amp;siret=<?= $postClient['siret_client'] ?>">Modifier les informations du client</a>
 <table class="table table-client">
 <thead>
     <tr>
@@ -137,7 +137,7 @@
 
 
 </br>  
-<a href="index.php?action=lireHistoriqueSuiviClient&amp;siret_client=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi client</a>
+<a href="index.php?action=lireHistoriqueSuiviClient&amp;siret=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi client</a>
 <table class="table table-suivi-client">
 <thead>
     <tr>
@@ -159,11 +159,12 @@
 </tr> 
 
 <p>Détail de la convention du client :</p>
-<a href="index.php?action=modificationConvention&amp;siret_client=<?= $postClient['siret_client'] ?>&amp;denomination_client=<?= $postClient['denomination_client'] ?>">Modifier les informations de la convention</a>
+<a href="index.php?action=modificationConvention&amp;siret=<?= $postClient['siret_client'] ?>&amp;denomination_client=<?= $postClient['denomination_client'] ?>&amp;id_conv=<?= $postConventionClient['id_info_convention'] ?>">Modifier les informations de la convention</a>
 </br>
 <table class="table table-convention-client">
 <thead>
     <tr>
+        <th scope="col">identifiant convention</th>        
         <th scope="col">Nbre de résidences principales</th>
         <th scope="col">Nbre de logements sociaux</th>
         <th scope="col">Calcul estimatif convention</th>
@@ -178,6 +179,7 @@
 </thead>
 <tbody>
     <tr>
+        <td><?= $postConventionClient['id_info_convention'];?></td>
         <td><?= $postConventionClient['nbreres_principales_conv'];?></td>
         <td><?= $postConventionClient['nbrelog_sociaux_conv'];?></td>
         <td><?= $postConventionClient['calcul_estimatif_conv'];?></td>
@@ -186,12 +188,12 @@
         <td><?= $postConventionClient['date_fin_conv_fr'];?></td>
         <td><?= $postConventionClient['durée_mois_conv'];?></td>
         <td><?= $postConventionClient['montant_annuel_conv'];?></td>
-        <td><?= $postConventionClient['commentaire_conv'];?></td>
+        <td><?= $postConventionClient['comment_conv'];?></td>
         <td><?= $postConventionClient['lien_conv'];?></td>
     </tr>  
 </tbody>
 </table>
-<a href="index.php?action=lireHistoriqueSuiviConvention&amp;siret_client=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi de la convention du client</a>
+<a href="index.php?action=lireHistoriqueSuiviConvention&amp;siret=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi de la convention du client</a>
 <table class="table table-suivi-convention">
 <thead>
     <tr>
@@ -212,7 +214,7 @@
 </table>
 
 <p>Détail de la deontologie du client :</p>
-<a href="index.php?action=modificationDeontologie&amp;siret_client=<?= $postClient['siret_client'] ?>&amp;denomination_client=<?= $postClient['denomination_client'] ?>">Modifier les informations de la Déontologie</a>
+<a href="index.php?action=modificationDeontologie&amp;siret=<?= $postClient['siret_client'] ?>&amp;denomination_client=<?= $postClient['denomination_client'] ?>">Modifier les informations de la Déontologie</a>
 </br>
 <table class="table table-deontologie-client">
 <thead>
@@ -230,7 +232,7 @@
     </tr>  
 </tbody>
 </table>
-<a href="index.php?action=lireHistoriqueSuiviDeontologie&amp;siret_client=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi de la déontologie du client</a>
+<a href="index.php?action=lireHistoriqueSuiviDeontologie&amp;siret=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi de la déontologie du client</a>
 <table class="table table-suivi-deontologie">
 <thead>
     <tr>
@@ -251,7 +253,7 @@
 </table>
 
 <p>Détail du dossier technique du client :</p>
-<a href="index.php?action=modificationTechnique&amp;siret_client=<?= $postClient['siret_client'] ?>&amp;denomination_client=<?= $postClient['denomination_client'] ?>">Modifier les informations du dossier technique</a>
+<a href="index.php?action=modificationTechnique&amp;siret=<?= $postClient['siret_client'] ?>&amp;denomination_client=<?= $postClient['denomination_client'] ?>">Modifier les informations du dossier technique</a>
 </br>
 <table class="table table-technique-client">
 <thead>
@@ -271,7 +273,7 @@
     </tr>  
 </tbody>
 </table>
-<a href="index.php?action=lireHistoriqueSuiviTechnique&amp;siret_client=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi du dossier technique du client</a>
+<a href="index.php?action=lireHistoriqueSuiviTechnique&amp;siret=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi du dossier technique du client</a>
 <table class="table table-suivi-technique">
 <thead>
     <tr>
@@ -292,7 +294,7 @@
 </table>
 
 <p>Détail de la prospection du client :</p>
-<a href="index.php?action=modificationProspection&amp;siret_client=<?= $postClient['siret_client'] ?>&amp;denomination_client=<?= $postClient['denomination_client'] ?>">Modifier les informations de la prospection</a>
+<a href="index.php?action=modificationProspection&amp;siret=<?= $postClient['siret_client'] ?>&amp;denomination_client=<?= $postClient['denomination_client'] ?>">Modifier les informations de la prospection</a>
 </br>
 <table class="table table-prospection-client">
 <thead>
@@ -306,7 +308,7 @@
     </tr>  
 </tbody>
 </table>
-<a href="index.php?action=lireHistoriqueSuiviTechnique&amp;siret_client=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi du dossier prospection du client</a>
+<a href="index.php?action=lireHistoriqueSuiviTechnique&amp;siret=<?= $postClient['siret_client'] ?>">Afficher l'historique du suivi du dossier prospection du client</a>
 <table class="table table-suivi-prospection">
 <thead>
     <tr>
